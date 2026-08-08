@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Alexis Daniel Rodríguez Zambrano — Geospatial, GIS, environmental research and data analysis portfolio.">
+
+    <title>
+        Alexis Daniel Rodríguez Zambrano | Geospatial Portfolio
+    </title>
+
+
+    <!-- FONTS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap"
+        rel="stylesheet">
+
+
+    <style>
+
+        /* =====================================================
+           ROOT
+        ===================================================== */
+
+        :root {
+
+            --paper: #f5f3ec;
+            --paper-light: #fffdfa;
+            --sage: #e5ece6;
+
+            --ink: #1b2924;
+            --muted: #65716b;
+
+            --green: #315f4c;
+            --green-light: #557966;
+
+            --warm: #b8795b;
+
+            --line: #d9ded8;
+
+            --shadow:
+                0 16px 45px rgba(28, 45, 37, 0.08);
+
+        }
+
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            font-family:
+                "DM Sans",
+                Arial,
+                sans-serif;
+
+            background: var(--paper);
+
+            color: var(--ink);
+
+            line-height: 1.7;
+
+            -webkit-font-smoothing: antialiased;
+
+        }
+
+
+        a {
+            color: inherit;
+        }
+
+
+        ::selection {
+
+            background: #c8d8cb;
+
+            color: var(--ink);
+
+        }
+
+
+        /* =====================================================
+           NAVIGATION
+        ===================================================== */
+
+        nav {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 18px 6.5%;
+
+            background:
+                rgba(248, 248, 243, 0.93);
+
+            backdrop-filter: blur(14px);
+
+            border-bottom:
+                1px solid var(--line);
+
+        }
+
+
+        .logo {
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.8px;
+
+        }
+
+
+        nav a {
+
+            position: relative;
+
+            margin-left: 28px;
+
+            text-decoration: none;
+
+            color: #53605a;
+
+            font-size: 13px;
+
+            transition: color 0.25s ease;
+
+        }
+
+
+        nav a::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: -7px;
+
+            width: 0;
+
+            height: 1px;
+
+            background: var(--green);
+
+            transition: width 0.25s ease;
+
+        }
+
+
+        nav a:hover {
+
+            color: var(--green);
+
+        }
+
+
+        nav a:hover::after {
+
+            width: 100%;
+
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+
+            min-height: 78vh;
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1fr)
+                270px;
+
+            align-items: center;
+
+            gap: 75px;
+
+            padding:
+                95px
+                8%
+                105px;
+
+            background:
+
+                radial-gradient(
+                    circle at 82% 22%,
+                    rgba(177, 199, 185, 0.28),
+                    transparent 30%
+                ),
+
+                var(--paper-light);
+
+        }
+
+
+        .hero-content {
+
+            max-width: 900px;
+
+        }
+
+
+        .eyebrow {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 23px;
+
+            color: var(--green-light);
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 2.4px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .eyebrow::before {
+
+            content: "";
+
+            width: 34px;
+
+            height: 1px;
+
+            background: var(--warm);
+
+        }
+
+
+        .hero h1 {
+
+            font-family:
+                "Newsreader",
+                Georgia,
+                serif;
+
+            font-size:
+                clamp(
+                    55px,
+                    7vw,
+                    92px
+                );
+
+            line-height: 0.94;
+
+            font-weight: 400;
+
+            letter-spacing: -2.5px;
+
+            margin-bottom: 28px;
+
+        }
+
+
+        .hero h2 {
+
+            font-size: 20px;
+
+            font-weight: 500;
+
+            color: #4e5d56;
+
+            margin-bottom: 23px;
+
+        }
+
+
+        .hero p {
+
+            max-width: 650px;
+
+            color: var(--muted);
+
+            font-size: 17px;
+
+            line-height: 1.85;
+
+        }
+
+
+        .button {
+
+            display: inline-flex;
+
+            margin-top: 28px;
+
+            padding:
+                12px
+                19px;
+
+            background: var(--green);
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.3px;
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease,
+                box-shadow 0.2s ease;
+
+        }
+
+
+        .button:hover {
+
+            background: #244a3a;
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 20px
+                rgba(36, 74, 58, 0.15);
+
+        }
+
+
+        .scroll-note {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-top: 48px;
+
+            color: #7c8882;
+
+            font-size: 10px;
+
+            letter-spacing: 1.8px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .scroll-line {
+
+            width: 42px;
+
+            height: 1px;
+
+            background: #a9b5ae;
+
+        }
+
+
+        /* =====================================================
+           PROFILE PHOTO
+        ===================================================== */
+
+        .hero-photo {
+
+            width: 270px;
+
+            height: 355px;
+
+            position: relative;
+
+        }
+
+
+        .hero-photo::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset:
+                16px
+                -16px
+                -16px
+                16px;
+
+            border:
+                1px solid
+                #9db0a3;
+
+        }
+
+
+        .hero-photo img {
+
+            position: relative;
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            filter: saturate(0.88);
+
+            box-shadow: var(--shadow);
+
+        }
+
+
+        /* =====================================================
+           GENERAL SECTIONS
+        ===================================================== */
+
+        .section-wrap {
+
+            max-width: 1180px;
+
+            margin: auto;
+
+            padding:
+                92px
+                6.5%;
+
+        }
+
+
+        .section-label {
+
+            margin-bottom: 12px;
+
+            color: var(--green-light);
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 2.4px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .section-title {
+
+            font-family:
+                "Newsreader",
+                Georgia,
+                serif;
+
+            font-size:
+                clamp(
+                    39px,
+                    5vw,
+                    58px
+                );
+
+            line-height: 1.02;
+
+            font-weight: 400;
+
+            letter-spacing: -1px;
+
+            margin-bottom: 40px;
+
+        }
+
+
+        /* =====================================================
+           PROJECTS
+        ===================================================== */
+
+        .projects {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
+
+            gap: 24px;
+
+        }
+
+
+        .project {
+
+            background: var(--paper-light);
+
+            border:
+                1px solid
+                var(--line);
+
+            box-shadow:
+                0 8px 28px
+                rgba(28, 45, 37, 0.045);
+
+            overflow: hidden;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+
+        }
+
+
+        .project:hover {
+
+            transform:
+                translateY(-5px);
+
+            box-shadow:
+                var(--shadow);
+
+        }
+
+
+        .project-image {
+
+            height: 210px;
+
+            overflow: hidden;
+
+            background: #dce6df;
+
+        }
+
+
+        .project-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition:
+                transform 0.5s ease;
+
+        }
+
+
+        .project:hover
+        .project-image img {
+
+            transform:
+                scale(1.035);
+
+        }
+
+
+        .project-content {
+
+            padding:
+                24px
+                26px
+                28px;
+
+        }
+
+
+        .project-meta {
+
+            font-size: 10px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+
+            color: #7a867f;
+
+            margin-bottom: 9px;
+
+        }
+
+
+        .project h3 {
+
+            font-family:
+                "Newsreader",
+                Georgia,
+                serif;
+
+            font-size: 27px;
+
+            line-height: 1.08;
+
+            font-weight: 500;
+
+            margin-bottom: 13px;
+
+        }
+
+
+        .project p {
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            color: var(--muted);
+
+        }
+
+
+        .tags {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 6px;
+
+            margin-top: 18px;
+
+        }
+
+
+        .tag {
+
+            padding:
+                5px
+                9px;
+
+            border:
+                1px solid
+                #d7dfd8;
+
+            background:
+                #f3f5f0;
+
+            color: #52645b;
+
+            font-size: 10px;
+
+            letter-spacing: 0.3px;
+
+        }
+
+
+        .project-link {
+
+            display: inline-block;
+
+            margin-top: 19px;
+
+            color: var(--green);
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            text-decoration: none;
+
+        }
+
+
+        .project-link:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* =====================================================
+           MAPS
+        ===================================================== */
+
+        .maps-section {
+
+            background:
+                var(--sage);
+
+        }
+
+
+        .maps-inner {
+
+            max-width: 1180px;
+
+            margin: auto;
+
+            padding:
+                92px
+                6.5%;
+
+        }
+
+
+        .maps-intro {
+
+            max-width: 720px;
+
+            color: #596861;
+
+            font-size: 16px;
+
+            line-height: 1.8;
+
+            margin-bottom: 35px;
+
+        }
+
+
+        .maps-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 18px;
+
+        }
+
+
+        .map-card {
+
+            min-height: 170px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.5
+                );
+
+            border:
+                1px solid
+                #cbd7cd;
+
+            padding: 28px;
+
+        }
+
+
+        .map-card span {
+
+            font-size: 10px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+
+            color: var(--green-light);
+
+        }
+
+
+        .map-card h3 {
+
+            font-family:
+                "Newsreader",
+                Georgia,
+                serif;
+
+            font-size: 25px;
+
+            font-weight: 500;
+
+            margin:
+                12px
+                0
+                6px;
+
+        }
+
+
+        .map-card p {
+
+            font-size: 13px;
+
+            color: #68766f;
+
+        }
+
+
+        /* =====================================================
+           RESEARCH
+        ===================================================== */
+
+        .research-intro {
+
+            max-width: 720px;
+
+            color: #596861;
+
+            font-size: 16px;
+
+            line-height: 1.8;
+
+            margin-bottom: 35px;
+
+        }
+
+
+        .research-card {
+
+            max-width: 900px;
+
+            background:
+                var(--paper-light);
+
+            border:
+                1px solid
+                var(--line);
+
+            border-left:
+                4px solid
+                var(--green-light);
+
+            padding:
+                30px
+                34px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(28,45,37,0.045);
+
+        }
+
+
+        .research-card h3 {
+
+            font-family:
+                "Newsreader",
+                Georgia,
+                serif;
+
+            font-size: 29px;
+
+            font-weight: 500;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .research-card p {
+
+            color: var(--muted);
+
+            font-size: 15px;
+
+            line-height: 1.75;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .research-link {
+
+            color: var(--green);
+
+            font-weight: 700;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+        }
+
+
+        /* =====================================================
+           ABOUT
+        ===================================================== */
+
+        .about {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e7eee8,
+                    #f0f2ed
+                );
+
+        }
+
+
+        .about-inner {
+
+            max-width: 1180px;
+
+            margin: auto;
+
+            padding:
+                92px
+                6.5%;
+
+        }
+
+
+        .about-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1.3fr
+                0.7fr;
+
+            gap: 75px;
+
+        }
+
+
+        .about-text {
+
+            font-size: 17px;
+
+            line-height: 1.85;
+
+            color: #52625a;
+
+            max-width: 760px;
+
+        }
+
+
+        .interests {
+
+            border-left:
+                1px solid
+                #aebdb2;
+
+            padding-left: 26px;
+
+        }
+
+
+        .interests-title {
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            color: var(--green);
+
+            margin-bottom: 13px;
+
+        }
+
+
+        .interests p {
+
+            font-size: 14px;
+
+            color: #64716b;
+
+            line-height: 1.9;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            background: #1b2924;
+
+            color: #dbe4de;
+
+            padding:
+                48px
+                6.5%;
+
+        }
+
+
+        .footer-inner {
+
+            max-width: 1180px;
+
+            margin: auto;
+
+        }
+
+
+        .footer-name {
+
+            font-family:
+                "Newsreader",
+                Georgia,
+                serif;
+
+            font-size: 24px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .footer-description {
+
+            color: #aebbb4;
+
+            font-size: 13px;
+
+            margin-bottom: 22px;
+
+        }
+
+
+        .footer-links a {
+
+            display: inline-block;
+
+            margin-right: 22px;
+
+            color: #dbe4de;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+        }
+
+
+        .footer-links a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        .footer-bottom {
+
+            margin-top: 32px;
+
+            padding-top: 17px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            color: #87968e;
+
+            font-size: 11px;
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 850px) {
+
+            nav {
+
+                padding:
+                    17px
+                    5%;
+
+            }
+
+
+            nav div:last-child {
+
+                display: none;
+
+            }
+
+
+            .hero {
+
+                grid-template-columns: 1fr;
+
+                min-height: auto;
+
+                padding:
+                    75px
+                    6%
+                    80px;
+
+                gap: 50px;
+
+            }
+
+
+            .hero-photo {
+
+                width: 230px;
+
+                height: 305px;
+
+                margin-left: 15px;
+
+            }
+
+
+            .projects,
+            .maps-grid,
+            .about-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .section-wrap,
+            .maps-inner,
+            .about-inner {
+
+                padding:
+                    75px
+                    6%;
+
+            }
+
+
+            .project-image {
+
+                height: 190px;
+
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .hero h1 {
+
+                font-size: 49px;
+
+            }
+
+
+            .hero h2 {
+
+                font-size: 18px;
+
+            }
+
+
+            .hero-photo {
+
+                width: 205px;
+
+                height: 275px;
+
+            }
+
+
+            .project-content {
+
+                padding: 22px;
+
+            }
+
+
+            .section-title {
+
+                font-size: 40px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ===================================================== -->
+
+    <nav>
+
+        <div class="logo">
+            ALEXIS RODRÍGUEZ
+        </div>
+
+        <div>
+
+            <a href="#projects">
+                Projects
+            </a>
+
+            <a href="#maps">
+                Maps
+            </a>
+
+            <a href="#research">
+                Research
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                Geospatial Portfolio
+            </div>
+
+            <h1>
+                Alexis Daniel<br>
+                Rodríguez Zambrano
+            </h1>
+
+            <h2>
+                Geospatial · GIS · Data Science · Environmental Research
+            </h2>
+
+            <p>
+                Developing an interdisciplinary approach to environmental
+                research through geospatial methods, spatial data,
+                geographic analysis, and scientific visualization.
+            </p>
+
+            <a
+                class="button"
+                href="#projects">
+
+                Explore my work →
+
+            </a>
+
+            <div class="scroll-note">
+
+                <span class="scroll-line"></span>
+
+                Selected work
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-photo">
+
+            <img
+                src="profile-alexis.jpg"
+                alt="Alexis Daniel Rodríguez Zambrano">
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         PROJECTS
+    ===================================================== -->
+
+    <section
+        id="projects"
+        class="section-wrap">
+
+        <div class="section-label">
+            Selected work
+        </div>
+
+        <h2 class="section-title">
+            Projects
+        </h2>
+
+
+        <div class="projects">
+
+
+            <!-- PROJECT 1 -->
+
+            <article class="project">
+
+                <div class="project-image">
+
+                    <img
+                        src="ecuador-food-sovereignty.png"
+                        alt="Food Sovereignty in Ecuador StoryMap">
+
+                </div>
+
+
+                <div class="project-content">
+
+                    <div class="project-meta">
+                        Interdisciplinary Research · April 2026
+                    </div>
+
+                    <h3>
+                        Food Sovereignty in Ecuador
+                    </h3>
+
+                    <p>
+                        An interdisciplinary research project examining
+                        food sovereignty through Ecuadorian geography,
+                        Indigenous food systems, land relations,
+                        environmental change, and grassroots organizing.
+                    </p>
+
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            ArcGIS StoryMaps
+                        </span>
+
+                        <span class="tag">
+                            GIS
+                        </span>
+
+                        <span class="tag">
+                            Environmental Research
+                        </span>
+
+                        <span class="tag">
+                            Spatial Visualization
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="ecuador.html"
+                        class="project-link">
+
+                        Explore project →
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROJECT 2 -->
+
+            <article class="project">
+
+                <div class="project-image">
+
+                    <img
+                        src="assets/behavioral-patterns.png"
+                        alt="Hermit crab behavioral responses to microplastic exposure">
+
+                </div>
+
+
+                <div class="project-content">
+
+                    <div class="project-meta">
+                        Marine Ecology · Experimental Research · 2026
+                    </div>
+
+                    <h3>
+                        Hermit Crab Behavioral Responses
+                        to Microplastic Exposure
+                    </h3>
+
+                    <p>
+                        A controlled marine ecology experiment examining
+                        behavioral responses of <em>Pagurus samuelis</em>
+                        across nominal microplastic exposure levels,
+                        combining observation, statistical analysis,
+                        and scientific visualization.
+                    </p>
+
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            Marine Ecology
+                        </span>
+
+                        <span class="tag">
+                            Experimental Research
+                        </span>
+
+                        <span class="tag">
+                            R / RStudio
+                        </span>
+
+                        <span class="tag">
+                            Data Analysis
+                        </span>
+
+                        <span class="tag">
+                            Scientific Visualization
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="hermit-crab.html"
+                        class="project-link">
+
+                        Explore project →
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MAPS
+    ===================================================== -->
+
+    <div
+        class="maps-section"
+        id="maps">
+
+        <div class="maps-inner">
+
+            <div class="section-label">
+                Spatial work
+            </div>
+
+            <h2 class="section-title">
+                Maps & Spatial Visualisation
+            </h2>
+
+            <p class="maps-intro">
+
+                A growing collection of maps, spatial visualisations,
+                and geographic analyses developed through GIS and
+                environmental research.
+
+            </p>
+
+
+            <div class="maps-grid">
+
+
+                <div class="map-card">
+
+                    <span>
+                        Current focus
+                    </span>
+
+                    <h3>
+                        Environmental GIS
+                    </h3>
+
+                    <p>
+                        Spatial analysis and cartographic communication
+                        for environmental questions.
+                    </p>
+
+                </div>
+
+
+                <div class="map-card">
+
+                    <span>
+                        Coming next
+                    </span>
+
+                    <h3>
+                        Selected map portfolio
+                    </h3>
+
+                    <p>
+                        Additional cartographic projects and spatial
+                        analyses will be added as the portfolio develops.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         RESEARCH
+    ===================================================== -->
+
+    <section
+        id="research"
+        class="section-wrap">
+
+        <div class="section-label">
+            Academic work
+        </div>
+
+        <h2 class="section-title">
+            Research
+        </h2>
+
+        <p class="research-intro">
+
+            Academic and collaborative research connecting
+            environmental questions, geographic analysis,
+            experimental methods, and interdisciplinary approaches
+            to human–environment relationships.
+
+        </p>
+
+
+        <div class="research-card">
+
+            <h3>
+                Research & Scientific Communication
+            </h3>
+
+            <p>
+
+                My research experience includes collaborative
+                environmental projects, quantitative analysis,
+                scientific visualization, and communicating results
+                to both academic and general audiences.
+
+            </p>
+
+            <a
+                class="research-link"
+                href="hermit-crab.html">
+
+                View research project →
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ABOUT
+    ===================================================== -->
+
+    <div
+        class="about"
+        id="about">
+
+        <div class="about-inner">
+
+            <div class="section-label">
+                About
+            </div>
+
+            <h2 class="section-title">
+                About me
+            </h2>
+
+
+            <div class="about-grid">
+
+
+                <p class="about-text">
+
+                    I am an undergraduate researcher interested
+                    in geospatial science, GIS, environmental research,
+                    and the role of spatial data in understanding
+                    complex environmental systems.
+
+                    <br><br>
+
+                    My academic interests sit at the intersection
+                    of geography, environmental science, spatial
+                    analysis, and visual communication. I am particularly
+                    interested in transforming environmental data into
+                    clear maps, quantitative analyses, and research
+                    narratives that make complex questions easier
+                    to understand.
+
+                </p>
+
+
+                <div class="interests">
+
+                    <div class="interests-title">
+                        Areas of interest
+                    </div>
+
+                    <p>
+
+                        Geospatial Science<br>
+                        Geographic Information Systems<br>
+                        Spatial Analysis<br>
+                        Environmental Research<br>
+                        Data Science<br>
+                        Cartographic Communication<br>
+                        Human–Environment Relationships
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer id="contact">
+
+        <div class="footer-inner">
+
+            <div class="footer-name">
+                Alexis Daniel Rodríguez Zambrano
+            </div>
+
+            <div class="footer-description">
+
+                Geospatial · GIS · Data Science · Environmental Research
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="https://www.linkedin.com/in/alexisdanielrodriguez" target="_blank" rel="noopener noreferrer">
+                www.linkedin.com/in/alexisdanielrodriguez
+                </a>
+
+                <a href="#">
+                    GitHub
+                </a>
+
+                <a href="mailto:alexisrz.sci@gmail.com">
+                alexisrz.sci@gmail.com
+                </a>
+
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                © 2026 Alexis Daniel Rodríguez Zambrano
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>
