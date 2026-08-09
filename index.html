@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +19,9 @@
     </title>
 
 
-    <!-- FONTS -->
+    <!-- =====================================================
+         FONTS
+    ====================================================== -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -31,6 +34,10 @@
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap"
         rel="stylesheet">
 
+
+    <!-- =====================================================
+         STYLES
+    ====================================================== -->
 
     <style>
 
@@ -718,7 +725,7 @@
 
 
         /* =====================================================
-           MAPS
+           MAPS — CAROUSEL
         ===================================================== */
 
         .maps-section {
@@ -757,40 +764,175 @@
         }
 
 
-        .maps-grid {
+        .maps-head {
 
-            display: grid;
+            display: flex;
 
-            grid-template-columns:
-                1fr 1fr;
+            justify-content: space-between;
 
-            gap: 18px;
+            align-items: flex-end;
+
+            gap: 24px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .view-all {
+
+            flex-shrink: 0;
+
+            margin-bottom: 40px;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            color: var(--green);
+
+            text-decoration: none;
+
+            border-bottom: 1px solid var(--green);
+
+            padding-bottom: 2px;
+
+            white-space: nowrap;
+
+        }
+
+
+        .view-all:hover {
+
+            color: var(--warm);
+
+            border-color: var(--warm);
+
+        }
+
+
+        .maps-carousel-wrap {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+        }
+
+
+        .maps-carousel {
+
+            display: flex;
+
+            gap: 20px;
+
+            overflow-x: auto;
+
+            scroll-snap-type: x mandatory;
+
+            scroll-behavior: smooth;
+
+            padding: 4px 4px 18px;
+
+            -ms-overflow-style: none;
+
+            scrollbar-width: none;
+
+        }
+
+
+        .maps-carousel::-webkit-scrollbar {
+
+            display: none;
 
         }
 
 
         .map-card {
 
-            min-height: 170px;
+            flex: 0 0 320px;
+
+            scroll-snap-align: start;
 
             background:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.5
-                );
+                rgba(255, 255, 255, 0.55);
 
             border:
                 1px solid
                 #cbd7cd;
 
-            padding: 28px;
+            overflow: hidden;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
 
         }
 
 
-        .map-card span {
+        .map-card:hover {
+
+            transform: translateY(-4px);
+
+            box-shadow: var(--shadow);
+
+        }
+
+
+        .map-card a {
+
+            display: block;
+
+            text-decoration: none;
+
+            color: inherit;
+
+        }
+
+
+        .map-card-img {
+
+            aspect-ratio: 4 / 3;
+
+            overflow: hidden;
+
+            background: #10151a;
+
+        }
+
+
+        .map-card-img img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition: transform 0.5s ease;
+
+        }
+
+
+        .map-card:hover .map-card-img img {
+
+            transform: scale(1.035);
+
+        }
+
+
+        .map-card-body {
+
+            padding: 22px 24px 26px;
+
+        }
+
+
+        .map-card-body span {
 
             font-size: 10px;
 
@@ -803,30 +945,90 @@
         }
 
 
-        .map-card h3 {
+        .map-card-body h3 {
 
             font-family:
                 "Newsreader",
                 Georgia,
                 serif;
 
-            font-size: 25px;
+            font-size: 22px;
 
             font-weight: 500;
 
             margin:
-                12px
+                10px
                 0
                 6px;
 
         }
 
 
-        .map-card p {
+        .map-card-body p {
 
             font-size: 13px;
 
             color: #68766f;
+
+            line-height: 1.6;
+
+        }
+
+
+        .map-card-empty {
+
+            display: flex;
+
+            background: transparent;
+
+            border-style: dashed;
+
+        }
+
+
+        .map-card-empty .map-card-body {
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 30px 24px;
+
+        }
+
+
+        .carousel-btn {
+
+            flex-shrink: 0;
+
+            width: 38px;
+
+            height: 38px;
+
+            border: 1px solid #cbd7cd;
+
+            background:
+                rgba(255, 255, 255, 0.6);
+
+            color: var(--green);
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            transition: background 0.2s ease;
+
+        }
+
+
+        .carousel-btn:hover {
+
+            background:
+                rgba(255, 255, 255, 0.95);
 
         }
 
@@ -1152,7 +1354,6 @@
 
 
             .projects,
-            .maps-grid,
             .about-grid {
 
                 grid-template-columns: 1fr;
@@ -1174,6 +1375,20 @@
             .project-image {
 
                 height: 190px;
+
+            }
+
+
+            .map-card {
+
+                flex-basis: 78vw;
+
+            }
+
+
+            .carousel-btn {
+
+                display: none;
 
             }
 
@@ -1230,7 +1445,7 @@
 
     <!-- =====================================================
          NAVIGATION
-    ===================================================== -->
+    ====================================================== -->
 
     <nav>
 
@@ -1240,12 +1455,12 @@
 
         <div>
 
-            <a href="#projects">
-                Projects
-            </a>
-
             <a href="#maps">
                 Maps
+            </a>
+
+            <a href="#projects">
+                Projects
             </a>
 
             <a href="#research">
@@ -1267,7 +1482,7 @@
 
     <!-- =====================================================
          HERO
-    ===================================================== -->
+    ====================================================== -->
 
     <header class="hero">
 
@@ -1323,8 +1538,353 @@
 
 
     <!-- =====================================================
+         MAPS
+    ====================================================== -->
+
+    <div
+        class="maps-section"
+        id="maps">
+
+        <div class="maps-inner">
+
+            <div class="maps-head">
+
+                <div>
+
+                    <div class="section-label">
+                        Spatial work
+                    </div>
+
+                    <h2 class="section-title">
+                        Maps & Spatial Visualisation
+                    </h2>
+
+                    <p class="maps-intro">
+
+                        A growing collection of maps, spatial visualisations,
+                        and geographic analyses developed through GIS and
+                        environmental research.
+
+                    </p>
+
+                </div>
+
+                <a
+                    href="maps.html"
+                    class="view-all">
+
+                    View All →
+
+                </a>
+
+            </div>
+
+
+            <div class="maps-carousel-wrap">
+
+                <button
+                    class="carousel-btn prev"
+                    aria-label="Scroll left">
+
+                    ←
+
+                </button>
+
+
+                <div
+                    class="maps-carousel"
+                    id="mapsCarousel">
+
+
+                    <article class="map-card">
+
+                        <a href="maps.html">
+
+                            <div class="map-card-img">
+
+                                <img
+                                    src="assets/climathon-map.png"
+                                    alt="Río Segura renaturalisation suitability map">
+
+                            </div>
+
+                            <div class="map-card-body">
+
+                                <span>
+                                    Climathon Murcia · 2025
+                                </span>
+
+                                <h3>
+                                    Renaturalising the Río Segura
+                                </h3>
+
+                                <p>
+                                    Multi-criteria suitability analysis
+                                    for river renaturalisation zones.
+                                </p>
+
+                            </div>
+
+                        </a>
+
+                    </article>
+
+
+                    <article class="map-card">
+
+                        <a href="maps.html#recreation-centre">
+
+                            <div class="map-card-img">
+
+                                <img
+                                    src="assets/sigi-recreation-centre.png"
+                                    alt="Suitability map for locating a recreational centre in the Region of Murcia">
+
+                            </div>
+
+                            <div class="map-card-body">
+
+                                <span>
+                                    SIG I · Universidad de Murcia
+                                </span>
+
+                                <h3>
+                                    Locating a Recreational Centre
+                                </h3>
+
+                                <p>
+                                    Multi-layer suitability analysis
+                                    to identify viable sites for a new
+                                    recreational facility.
+                                </p>
+
+                            </div>
+
+                        </a>
+
+                    </article>
+
+
+                    <article class="map-card">
+
+                        <a href="maps.html#least-cost-route">
+
+                            <div class="map-card-img">
+
+                                <img
+                                    src="assets/sigi-least-cost-route.png"
+                                    alt="Least-cost route model between Caravaca and Cartagena">
+
+                            </div>
+
+                            <div class="map-card-body">
+
+                                <span>
+                                    SIG I · Universidad de Murcia
+                                </span>
+
+                                <h3>
+                                    Least-cost Route Modelling
+                                </h3>
+
+                                <p>
+                                    A friction surface combining slope
+                                    and land use to trace the lowest-cost
+                                    corridor.
+                                </p>
+
+                            </div>
+
+                        </a>
+
+                    </article>
+
+
+                    <article class="map-card">
+
+                        <a href="maps.html#land-suitability">
+
+                            <div class="map-card-img">
+
+                                <img
+                                    src="assets/sigi-land-suitability.png"
+                                    alt="Continuous land-suitability map built using multi-criteria analysis">
+
+                            </div>
+
+                            <div class="map-card-body">
+
+                                <span>
+                                    SIG I · Universidad de Murcia
+                                </span>
+
+                                <h3>
+                                    Land Suitability Assessment
+                                </h3>
+
+                                <p>
+                                    Weighted multi-criteria model translating
+                                    terrain, settlement access and land use
+                                    into a suitability index.
+                                </p>
+
+                            </div>
+
+                        </a>
+
+                    </article>
+
+
+                    <article class="map-card">
+
+                        <a href="maps.html#forest-connectivity">
+
+                            <div class="map-card-img">
+
+                                <img
+                                    src="assets/sigi-forest-connectivity.png"
+                                    alt="Forest-patch connectivity and fragmentation analysis in the Region of Murcia">
+
+                            </div>
+
+                            <div class="map-card-body">
+
+                                <span>
+                                    SIG I · Universidad de Murcia
+                                </span>
+
+                                <h3>
+                                    Forest Connectivity
+                                </h3>
+
+                                <p>
+                                    Forest-patch identification, area filtering
+                                    and terrain-based connectivity analysis.
+                                </p>
+
+                            </div>
+
+                        </a>
+
+                    </article>
+
+
+                    <article class="map-card">
+
+                        <a href="maps.html#sql-queries">
+
+                            <div class="map-card-img">
+
+                                <img
+                                    src="assets/sigi-sql-spatial-query.png"
+                                    alt="Spatial SQL query in QGIS DB Manager">
+
+                            </div>
+
+                            <div class="map-card-body">
+
+                                <span>
+                                    SIG I · Universidad de Murcia
+                                </span>
+
+                                <h3>
+                                    Spatial SQL Queries
+                                </h3>
+
+                                <p>
+                                    Database queries and spatial relationships
+                                    analysed with QGIS DB Manager.
+                                </p>
+
+                            </div>
+
+                        </a>
+
+                    </article>
+
+
+                    <article class="map-card">
+
+                        <a href="maps.html#rstudio-analysis">
+
+                            <div class="map-card-img">
+
+                                <img
+                                    src="assets/sigi-rstudio-analysis.png"
+                                    alt="RStudio boxplot comparing slope by land-use class">
+
+                            </div>
+
+                            <div class="map-card-body">
+
+                                <span>
+                                    SIG I · Universidad de Murcia
+                                </span>
+
+                                <h3>
+                                    Terrain Statistics in R
+                                </h3>
+
+                                <p>
+                                    R-based exploration of slope distributions
+                                    across land-use categories.
+                                </p>
+
+                            </div>
+
+                        </a>
+
+                    </article>
+
+
+                    <article class="map-card map-card-empty">
+
+                        <a href="maps.html">
+
+                            <div class="map-card-body">
+
+                                <span>
+                                    Coming next
+                                </span>
+
+                                <h3>
+                                    Selected map portfolio
+                                </h3>
+
+                                <p>
+                                    Additional cartographic projects and
+                                    spatial analyses will be added as the
+                                    portfolio develops.
+                                </p>
+
+                            </div>
+
+                        </a>
+
+                    </article>
+
+
+                </div>
+
+
+                <button
+                    class="carousel-btn next"
+                    aria-label="Scroll right">
+
+                    →
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
          PROJECTS
-    ===================================================== -->
+    ====================================================== -->
 
     <section
         id="projects"
@@ -1342,7 +1902,9 @@
         <div class="projects">
 
 
-            <!-- PROJECT 1 -->
+            <!-- =================================================
+                 PROJECT 1 — FOOD SOVEREIGNTY
+            ================================================== -->
 
             <article class="project">
 
@@ -1366,10 +1928,12 @@
                     </h3>
 
                     <p>
+
                         An interdisciplinary research project examining
                         food sovereignty through Ecuadorian geography,
                         Indigenous food systems, land relations,
                         environmental change, and grassroots organizing.
+
                     </p>
 
 
@@ -1407,14 +1971,17 @@
             </article>
 
 
-            <!-- PROJECT 2 -->
+            <!-- =================================================
+                 PROJECT 2 — HERMIT CRABS
+            ================================================== -->
 
             <article class="project">
 
                 <div class="project-image">
 
+                    <!-- IMAGE IS IN THE PORTFOLIO ROOT -->
                     <img
-                        src="assets/behavioral-patterns.png"
+                        src="hermit-crab-photo.jpeg"
                         alt="Hermit crab behavioral responses to microplastic exposure">
 
                 </div>
@@ -1432,11 +1999,13 @@
                     </h3>
 
                     <p>
+
                         A controlled marine ecology experiment examining
                         behavioral responses of <em>Pagurus samuelis</em>
                         across nominal microplastic exposure levels,
                         combining observation, statistical analysis,
                         and scientific visualization.
+
                     </p>
 
 
@@ -1478,87 +2047,90 @@
             </article>
 
 
+            <!-- =================================================
+                 PROJECT 3 — COLLABORATIVE BEETLE RESEARCH
+            ================================================== -->
+
+            <article class="project">
+
+                <div class="project-image">
+
+                    <!-- IMAGE IS IN THE PORTFOLIO ROOT -->
+                    <img
+                        src="beetle-research.jpeg"
+                        alt="Ten-year assessment of beetle assemblages at the Robert J. Bernard Field Station">
+
+                </div>
+
+
+                <div class="project-content">
+
+                    <div class="project-meta">
+                        Collaborative Research · Arthropod Ecology · 2026
+                    </div>
+
+                    <h3>
+                        10-Year Assessment of Beetle Assemblages
+                    </h3>
+
+                    <p>
+
+                        A collaborative ecological research project examining
+                        changes in beetle assemblages over a ten-year period
+                        at the Robert J. Bernard Field Station in Southern
+                        California, involving field and laboratory work,
+                        specimen processing, taxonomic identification,
+                        data management, and ecological research support.
+
+                    </p>
+
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            Arthropod Ecology
+                        </span>
+
+                        <span class="tag">
+                            Field Research
+                        </span>
+
+                        <span class="tag">
+                            Taxonomic Identification
+                        </span>
+
+                        <span class="tag">
+                            Data Management
+                        </span>
+
+                        <span class="tag">
+                            Community Ecology
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="collaborative-research.html"
+                        class="project-link">
+
+                        Explore project →
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
         </div>
 
     </section>
 
 
     <!-- =====================================================
-         MAPS
-    ===================================================== -->
-
-    <div
-        class="maps-section"
-        id="maps">
-
-        <div class="maps-inner">
-
-            <div class="section-label">
-                Spatial work
-            </div>
-
-            <h2 class="section-title">
-                Maps & Spatial Visualisation
-            </h2>
-
-            <p class="maps-intro">
-
-                A growing collection of maps, spatial visualisations,
-                and geographic analyses developed through GIS and
-                environmental research.
-
-            </p>
-
-
-            <div class="maps-grid">
-
-
-                <div class="map-card">
-
-                    <span>
-                        Current focus
-                    </span>
-
-                    <h3>
-                        Environmental GIS
-                    </h3>
-
-                    <p>
-                        Spatial analysis and cartographic communication
-                        for environmental questions.
-                    </p>
-
-                </div>
-
-
-                <div class="map-card">
-
-                    <span>
-                        Coming next
-                    </span>
-
-                    <h3>
-                        Selected map portfolio
-                    </h3>
-
-                    <p>
-                        Additional cartographic projects and spatial
-                        analyses will be added as the portfolio develops.
-                    </p>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =====================================================
          RESEARCH
-    ===================================================== -->
+    ====================================================== -->
 
     <section
         id="research"
@@ -1575,9 +2147,10 @@
         <p class="research-intro">
 
             Academic and collaborative research connecting
-            environmental questions, geographic analysis,
-            experimental methods, and interdisciplinary approaches
-            to human–environment relationships.
+            environmental questions, ecological field methods,
+            experimental approaches, data management, quantitative
+            analysis, and interdisciplinary approaches to
+            understanding ecological and human–environment systems.
 
         </p>
 
@@ -1585,23 +2158,42 @@
         <div class="research-card">
 
             <h3>
-                Research & Scientific Communication
+                Collaborative Arthropod Research
             </h3>
 
             <p>
 
-                My research experience includes collaborative
-                environmental projects, quantitative analysis,
-                scientific visualization, and communicating results
-                to both academic and general audiences.
+                My research experience includes hands-on ecological
+                field and laboratory work, specimen processing,
+                taxonomic identification, data management, and
+                scientific communication.
+
+                <br><br>
+
+                I contributed to a long-term study examining changes
+                in beetle assemblages over a ten-year period at the
+                Robert J. Bernard Field Station in Southern California.
+                My work included specimen processing, inventory,
+                family-level identification based on morphological
+                characteristics, ecological data organization,
+                and additional project support.
+
+                <br><br>
+
+                Species-level identification and the final community
+                analysis were completed by other members of the
+                research team, allowing my contribution to be
+                presented accurately within the broader collaborative
+                research process.
 
             </p>
 
+
             <a
                 class="research-link"
-                href="hermit-crab.html">
+                href="collaborative-research.html">
 
-                View research project →
+                View collaborative research →
 
             </a>
 
@@ -1612,7 +2204,7 @@
 
     <!-- =====================================================
          ABOUT
-    ===================================================== -->
+    ====================================================== -->
 
     <div
         class="about"
@@ -1666,7 +2258,8 @@
                         Environmental Research<br>
                         Data Science<br>
                         Cartographic Communication<br>
-                        Human–Environment Relationships
+                        Human–Environment Relationships<br>
+                        Ecological Field Research
 
                     </p>
 
@@ -1682,7 +2275,7 @@
 
     <!-- =====================================================
          FOOTER
-    ===================================================== -->
+    ====================================================== -->
 
     <footer id="contact">
 
@@ -1701,18 +2294,28 @@
 
             <div class="footer-links">
 
-                <a href="https://www.linkedin.com/in/alexisdanielrodriguez" target="_blank" rel="noopener noreferrer">
-                www.linkedin.com/in/alexisdanielrodriguez
+                <a
+                    href="https://www.linkedin.com/in/alexisdanielrodriguez"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    www.linkedin.com/in/alexisdanielrodriguez
+
                 </a>
+
 
                 <a href="mailto:alexisrz.sci@gmail.com">
-                alexisrz.sci@gmail.com
+
+                    alexisrz.sci@gmail.com
+
                 </a>
+
 
                 <a href="#">
-                    GitHub
-                </a>
 
+                    GitHub
+
+                </a>
 
             </div>
 
@@ -1728,6 +2331,83 @@
     </footer>
 
 
+    <!-- =====================================================
+         MAP CAROUSEL SCRIPT
+    ====================================================== -->
+
+    <script>
+
+        (function () {
+
+            var track =
+                document.getElementById('mapsCarousel');
+
+            if (!track) return;
+
+
+            var prevBtn =
+                document.querySelector('.carousel-btn.prev');
+
+            var nextBtn =
+                document.querySelector('.carousel-btn.next');
+
+
+            function scrollByCard(direction) {
+
+                var card =
+                    track.querySelector('.map-card');
+
+                var amount =
+                    card
+                        ? card.getBoundingClientRect().width + 20
+                        : 320;
+
+
+                track.scrollBy({
+
+                    left:
+                        direction * amount,
+
+                    behavior:
+                        'smooth'
+
+                });
+
+            }
+
+
+            if (prevBtn) {
+
+                prevBtn.addEventListener(
+                    'click',
+                    function () {
+
+                        scrollByCard(-1);
+
+                    }
+                );
+
+            }
+
+
+            if (nextBtn) {
+
+                nextBtn.addEventListener(
+                    'click',
+                    function () {
+
+                        scrollByCard(1);
+
+                    }
+                );
+
+            }
+
+        })();
+
+    </script>
+
 </body>
 
 </html>
+```

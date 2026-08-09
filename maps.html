@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Maps & Spatial Visualisation — Alexis Daniel Rodríguez Zambrano">
+
+    <title>
+        Maps & Spatial Visualisation | Alexis Rodríguez
+    </title>
+
+
+    <!-- FONTS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap"
+        rel="stylesheet">
+
+
+    <style>
+
+        :root {
+            --paper: #f5f3ec;
+            --paper-light: #fffdfa;
+            --sage: #e5ece6;
+            --ink: #18231f;
+            --muted: #5e6b64;
+            --green: #315f4c;
+            --green-light: #557966;
+            --warm: #b8795b;
+            --line: #d7ddd6;
+        }
+
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            font-family: "DM Sans", Arial, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+
+        a {
+            color: inherit;
+        }
+
+
+        ::selection {
+            background: #c8d8cb;
+            color: var(--ink);
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            height: 74px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6.5%;
+            background: rgba(248, 248, 243, 0.93);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--line);
+        }
+
+
+        .nav-name {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.8px;
+        }
+
+
+        nav a {
+            margin-left: 27px;
+            color: #53605a;
+            text-decoration: none;
+            font-size: 13px;
+            position: relative;
+        }
+
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -7px;
+            width: 0;
+            height: 1px;
+            background: var(--green);
+            transition: width 0.25s ease;
+        }
+
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            max-width: 1320px;
+            margin: auto;
+            padding: 95px 7vw 65px;
+        }
+
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--green-light);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.4px;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+        }
+
+
+        .eyebrow::before {
+            content: "";
+            width: 36px;
+            height: 1px;
+            background: var(--warm);
+        }
+
+
+        h1 {
+            font-family: "Newsreader", Georgia, serif;
+            font-size: clamp(48px, 6.5vw, 80px);
+            line-height: 0.98;
+            font-weight: 400;
+            letter-spacing: -2px;
+            max-width: 950px;
+            margin-bottom: 22px;
+        }
+
+
+        .hero-description {
+            max-width: 680px;
+            font-family: "Newsreader", Georgia, serif;
+            font-size: clamp(18px, 1.7vw, 22px);
+            line-height: 1.4;
+            color: #59675f;
+        }
+
+
+        /* =========================
+           MAP LIST
+        ========================= */
+
+        .maps {
+            max-width: 1180px;
+            margin: auto;
+            padding: 20px 7vw 100px;
+        }
+
+
+        .map-entry {
+            padding: 72px 0;
+            border-top: 1px solid var(--line);
+            display: grid;
+            grid-template-columns: 1.08fr 1fr;
+            gap: 65px;
+            align-items: center;
+        }
+
+
+        /* Alternate image position */
+
+        .map-entry:nth-of-type(even) {
+            direction: rtl;
+        }
+
+
+        .map-entry:nth-of-type(even) > * {
+            direction: ltr;
+        }
+
+
+        .map-entry:first-child {
+            border-top: 1px solid var(--line);
+        }
+
+
+        .map-figure {
+            border: 1px solid var(--line);
+            background: #0c0c10;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.10);
+            overflow: hidden;
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+
+        .map-figure:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 22px 52px rgba(0, 0, 0, 0.14);
+        }
+
+
+        .map-figure > img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+
+        .map-eyebrow {
+            color: var(--warm);
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+
+        .map-entry h2 {
+            font-family: "Newsreader", Georgia, serif;
+            font-size: clamp(28px, 3vw, 36px);
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+            color: var(--ink);
+        }
+
+
+        .map-entry p {
+            font-size: 15px;
+            color: #46564e;
+            margin-bottom: 14px;
+        }
+
+
+        .map-facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px solid var(--line);
+        }
+
+
+        .map-fact-label {
+            display: block;
+            color: #a86c50;
+            font-size: 9.5px;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+
+        .map-fact-value {
+            font-size: 13px;
+            color: #2c3c35;
+        }
+
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 18px;
+        }
+
+
+        .tag {
+            padding: 6px 10px;
+            border: 1px solid #cbd1c8;
+            color: #52635a;
+            font-size: 10px;
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+
+        /* =========================
+           CAROUSELS
+        ========================= */
+
+        .map-carousel {
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .map-carousel-slide {
+            display: none;
+            margin: 0;
+        }
+
+
+        .map-carousel-slide.is-active {
+            display: block;
+        }
+
+
+        .map-carousel-slide img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            background: #f7f7f4;
+        }
+
+
+        .map-carousel-caption {
+            padding: 10px 13px;
+            color: #65716b;
+            font-size: 11px;
+            background: #f7f7f4;
+            border-top: 1px solid #e0e3dd;
+        }
+
+
+        .map-carousel-arrow {
+            position: absolute;
+            top: 45%;
+            z-index: 2;
+
+            width: 36px;
+            height: 36px;
+
+            border: 1px solid #cbd5cd;
+            color: var(--green);
+            background: rgba(255, 255, 255, 0.92);
+
+            cursor: pointer;
+            font-size: 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+        }
+
+
+        .map-carousel-arrow:hover {
+            background: #fff;
+            transform: scale(1.04);
+        }
+
+
+        .map-carousel-prev {
+            left: 12px;
+        }
+
+
+        .map-carousel-next {
+            right: 12px;
+        }
+
+
+        .map-carousel-dots {
+            position: absolute;
+            z-index: 2;
+            right: 13px;
+            bottom: 42px;
+
+            display: flex;
+            gap: 7px;
+        }
+
+
+        .map-carousel-dot {
+            width: 8px;
+            height: 8px;
+            padding: 0;
+            border: 0;
+            border-radius: 50%;
+            background: #aeb9b1;
+            cursor: pointer;
+        }
+
+
+        .map-carousel-dot.is-active {
+            background: var(--green);
+        }
+
+
+        /* =========================
+           COMING NEXT
+        ========================= */
+
+        .coming-next {
+            margin-top: 30px;
+            padding: 45px 36px;
+            border: 1px dashed #c3cac2;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+
+        .coming-next .map-eyebrow {
+            justify-content: center;
+        }
+
+
+        .coming-next h3 {
+            font-family: "Newsreader", Georgia, serif;
+            font-weight: 500;
+            font-size: 23px;
+            color: var(--green);
+            margin-bottom: 8px;
+        }
+
+
+        .coming-next p {
+            font-size: 14px;
+            color: #66716b;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+
+        .back-link {
+            display: inline-block;
+            margin-top: 28px;
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 35px 6.5%;
+            background: #edf0eb;
+            color: #718078;
+            font-size: 11px;
+            border-top: 1px solid #d8ddd7;
+        }
+
+
+        footer strong {
+            color: #30443a;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 850px) {
+
+            nav {
+                padding: 0 5%;
+                height: 66px;
+            }
+
+
+            nav div:last-child {
+                display: none;
+            }
+
+
+            .hero {
+                padding: 65px 6vw 45px;
+            }
+
+
+            .maps {
+                padding: 10px 6vw 70px;
+            }
+
+
+            .map-entry,
+            .map-entry:nth-of-type(even) {
+                grid-template-columns: 1fr;
+                direction: ltr;
+                gap: 28px;
+                padding: 48px 0;
+            }
+
+
+            .map-entry h2 {
+                font-size: 30px;
+            }
+
+
+            .map-facts {
+                gap: 18px;
+            }
+
+
+            .map-carousel-arrow {
+                width: 34px;
+                height: 34px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav>
+
+        <div class="nav-name">
+            ALEXIS RODRÍGUEZ
+        </div>
+
+        <div>
+
+            <a href="index.html#projects">
+                Projects
+            </a>
+
+            <a href="index.html#maps">
+                Maps
+            </a>
+
+            <a href="index.html#research">
+                Research
+            </a>
+
+            <a href="index.html#about">
+                About
+            </a>
+
+            <a href="index.html#contact">
+                Contact
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <header class="hero">
+
+        <div class="eyebrow">
+            Spatial Work
+        </div>
+
+        <h1>
+            Maps & Spatial Visualisation
+        </h1>
+
+        <p class="hero-description">
+            A growing collection of maps, spatial visualisations, and
+            geographic analyses developed through GIS and environmental
+            research.
+        </p>
+
+    </header>
+
+
+
+    <!-- =========================
+         MAP LIST
+    ========================= -->
+
+    <main class="maps">
+
+
+        <!-- =========================
+             01 · CLIMATHON
+        ========================= -->
+
+        <div class="map-entry">
+
+            <div class="map-figure">
+
+                <img
+                    src="assets/climathon-map.png"
+                    alt="QGIS raster surface showing distance from urban centres and roads, used to locate candidate zones for renaturalising the Río Segura.">
+
+            </div>
+
+
+            <div>
+
+                <div class="map-eyebrow">
+                    Climathon Murcia · 2025
+                </div>
+
+                <h2>
+                    Renaturalising the Río Segura
+                </h2>
+
+                <p>
+                    A multi-criteria distance surface built to find stretches
+                    of the Segura river network suited for renaturalisation —
+                    far enough from urban núcleos and roads, on workable terrain.
+                </p>
+
+                <p>
+                    Combines distance rasters from urban centres and the road
+                    network with slope, land use, and the river's own drainage
+                    layers to screen candidate zones.
+                </p>
+
+
+                <div class="map-facts">
+
+                    <div>
+                        <span class="map-fact-label">
+                            Tool
+                        </span>
+
+                        <div class="map-fact-value">
+                            QGIS
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <span class="map-fact-label">
+                            Type
+                        </span>
+
+                        <div class="map-fact-value">
+                            Multi-criteria suitability
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <span class="map-fact-label">
+                            Area
+                        </span>
+
+                        <div class="map-fact-value">
+                            Segura river, Región de Murcia
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="tags">
+
+                    <span class="tag">
+                        QGIS
+                    </span>
+
+                    <span class="tag">
+                        Raster Analysis
+                    </span>
+
+                    <span class="tag">
+                        Hydrology
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             02 · RECREATION CENTRE
+        ========================= -->
+
+        <div class="map-entry">
+
+            <div class="map-figure">
+
+                <img
+                    src="assets/sigi-recreation-centre.png"
+                    alt="Suitability map for locating a recreational centre in the Region of Murcia.">
+
+            </div>
+
+
+            <div>
+
+                <div class="map-eyebrow">
+                    SIG I · Universidad de Murcia
+                </div>
+
+                <h2>
+                    Locating a Recreational Centre
+                </h2>
+
+                <p>
+                    A multi-layer suitability model developed to identify
+                    parcels for a recreational facility in Lorca,
+                    Bajo Guadalentín and Mazarrón.
+                </p>
+
+                <p>
+                    It combines compatible land use, proximity to towns
+                    over 10,000 inhabitants, slopes below 15%, runoff below
+                    20%, and a minimum site area of 50 hectares.
+                </p>
+
+
+                <div class="map-facts">
+
+                    <div>
+                        <span class="map-fact-label">
+                            Tool
+                        </span>
+
+                        <div class="map-fact-value">
+                            GRASS GIS / QGIS
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="map-fact-label">
+                            Type
+                        </span>
+
+                        <div class="map-fact-value">
+                            Constraint suitability analysis
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="map-fact-label">
+                            Area
+                        </span>
+
+                        <div class="map-fact-value">
+                            Región de Murcia, Spain
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="tags">
+
+                    <span class="tag">
+                        Raster Analysis
+                    </span>
+
+                    <span class="tag">
+                        Map Algebra
+                    </span>
+
+                    <span class="tag">
+                        Site Selection
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             03 · LEAST COST ROUTE
+        ========================= -->
+
+        <div class="map-entry">
+
+            <div class="map-figure">
+
+                <img
+                    src="assets/sigi-least-cost-route.png"
+                    alt="Least-cost route model between Caravaca and Cartagena.">
+
+            </div>
+
+
+            <div>
+
+                <div class="map-eyebrow">
+                    SIG I · Universidad de Murcia
+                </div>
+
+                <h2>
+                    Least-cost Route between Caravaca and Cartagena
+                </h2>
+
+                <p>
+                    A route model that finds the lowest-cost path across the
+                    region by treating terrain and land cover as a continuous
+                    friction surface.
+                </p>
+
+                <p>
+                    Land-use classes were reclassified by traversal cost and
+                    combined with slope; accumulated cost and movement direction
+                    were then used to derive the optimal corridor.
+                </p>
+
+
+                <div class="map-facts">
+
+                    <div>
+                        <span class="map-fact-label">
+                            Tool
+                        </span>
+
+                        <div class="map-fact-value">
+                            GRASS GIS / QGIS
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="map-fact-label">
+                            Type
+                        </span>
+
+                        <div class="map-fact-value">
+                            Least-cost path analysis
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="map-fact-label">
+                            Area
+                        </span>
+
+                        <div class="map-fact-value">
+                            Región de Murcia, Spain
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="tags">
+
+                    <span class="tag">
+                        Cost Surface
+                    </span>
+
+                    <span class="tag">
+                        Terrain Analysis
+                    </span>
+
+                    <span class="tag">
+                        Routing
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             04 · LAND SUITABILITY
+        ========================= -->
+
+        <div class="map-entry">
+
+            <div class="map-figure">
+
+                <img
+                    src="assets/sigi-land-suitability.png"
+                    alt="Continuous land-suitability map built using multi-criteria analysis.">
+
+            </div>
+
+
+            <div>
+
+                <div class="map-eyebrow">
+                    SIG I · Universidad de Murcia
+                </div>
+
+                <h2>
+                    Multi-criteria Land Suitability Assessment
+                </h2>
+
+                <p>
+                    A continuous suitability index built to compare territory
+                    through slope, distance to urban areas and land-use
+                    conditions.
+                </p>
+
+                <p>
+                    Criteria were weighted through an Analytic Hierarchy
+                    Process (AHP) and combined with TOPSIS in R to map the
+                    relative suitability of each location.
+                </p>
+
+
+                <div class="map-facts">
+
+                    <div>
+                        <span class="map-fact-label">
+                            Tool
+                        </span>
+
+                        <div class="map-fact-value">
+                            R / QGIS
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="map-fact-label">
+                            Type
+                        </span>
+
+                        <div class="map-fact-value">
+                            Multi-criteria decision analysis
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="map-fact-label">
+                            Area
+                        </span>
+
+                        <div class="map-fact-value">
+                            Región de Murcia, Spain
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="tags">
+
+                    <span class="tag">
+                        AHP
+                    </span>
+
+                    <span class="tag">
+                        TOPSIS
+                    </span>
+
+                    <span class="tag">
+                        Suitability Modelling
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             05 · FOREST CONNECTIVITY
+        ========================= -->
+
+        <div class="map-entry">
+
+            <div class="map-figure">
+
+                <img
+                    src="assets/sigi-forest-connectivity.png"
+                    alt="Forest connectivity analysis based on forest patches, area and terrain.">
+
+            </div>
+
+
+            <div>
+
+                <div class="map-eyebrow">
+                    SIG I · Universidad de Murcia
+                </div>
+
+                <h2>
+                    Forest Fragmentation &amp; Connectivity
+                </h2>
+
+                <p>
+                    An analysis of forest fragmentation that identifies
+                    individual woodland patches and filters those larger
+                    than 500 hectares.
+                </p>
+
+                <p>
+                    The work also models urban proximity and a terrain-cost
+                    route between Santomera and Mazarrón, linking patch
+                    structure with territorial connectivity.
+                </p>
+
+
+                <div class="map-facts">
+
+                    <div>
+                        <span class="map-fact-label">
+                            Tool
+                        </span>
+
+                        <div class="map-fact-value">
+                            GRASS GIS / QGIS
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="map-fact-label">
+                            Type
+                        </span>
+
+                        <div class="map-fact-value">
+                            Landscape connectivity analysis
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="map-fact-label">
+                            Area
+                        </span>
+
+                        <div class="map-fact-value">
+                            Región de Murcia, Spain
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="tags">
+
+                    <span class="tag">
+                        Landscape Ecology
+                    </span>
+
+                    <span class="tag">
+                        Fragmentation
+                    </span>
+
+                    <span class="tag">
+                        Raster Analysis
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             06 · SPATIAL SQL
+        ========================= -->
+
+        <div class="map-entry">
+
+            <div
+                class="map-figure map-carousel"
+                data-map-carousel>
+
+                <figure class="map-carousel-slide is-active">
+
+                    <img
+                        src="assets/sigi-sql-query.png"
+                        alt="SQL query in QGIS DB Manager.">
+
+                    <figcaption class="map-carousel-caption">
+                        SQL query in DB Manager
+                    </figcaption>
+
+                </figure>
+
+
+                <figure class="map-carousel-slide">
+
+                    <img
+                        src="assets/sigi-sql-result-map.png"
+                        alt="Final spatial SQL result map.">
+
+                    <figcaption class="map-carousel-caption">
+                         Final spatial query result
+                    </figcaption>
+
+                </figure>
+
+
+                <button
+                    class="map-carousel-arrow map-carousel-prev"
+                    type="button"
+                    aria-label="Previous SQL figure">
+                    ←
+                </button>
+
+
+                <button
+                    class="map-carousel-arrow map-carousel-next"
+                    type="button"
+                    aria-label="Next SQL figure">
+                    →
+                </button>
+
+
+                <div class="map-carousel-dots">
+
+                    <button
+                        class="map-carousel-dot is-active"
+                        type="button"
+                        aria-label="Show SQL query">
+                    </button>
+
+                    <button
+                        class="map-carousel-dot"
+                        type="button"
+                        aria-label="Show SQL result map">
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <div class="map-eyebrow">
+                    SIG I · Universidad de Murcia
+                </div>
+
+                <h2>
+                    Spatial SQL Queries
+                </h2>
+
+                <p>
+                    A set of database queries developed in QGIS DB Manager
+                    to filter, relate and create new geographic layers from
+                    municipal and environmental datasets.
+                </p>
+
+                <p>
+                    Use the arrows or dots to switch between the SQL interface
+                    and the final selected layer.
+                </p>
+
+
+                <div class="map-facts">
+
+                    <div>
+                        <span class="map-fact-label">
+                            Tool
+                        </span>
+
+                        <div class="map-fact-value">
+                            QGIS DB Manager / SQL
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="map-fact-label">
+                            Type
+                        </span>
+
+                        <div class="map-fact-value">
+                            Spatial database analysis
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="map-fact-label">
+                            Area
+                        </span>
+
+                        <div class="map-fact-value">
+                            Segura Basin, Spain
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="tags">
+
+                    <span class="tag">
+                        SQL
+                    </span>
+
+                    <span class="tag">
+                        Spatial Queries
+                    </span>
+
+                    <span class="tag">
+                        PostGIS Concepts
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             07 · R / RSTUDIO
+        ========================= -->
+
+        <div class="map-entry">
+
+            <div
+                class="map-figure map-carousel"
+                data-map-carousel>
+
+                <figure class="map-carousel-slide is-active">
+
+                    <img
+                        src="assets/sigi-rstudio-interface.png"
+                        alt="RStudio interface showing the analysis and boxplot.">
+
+                    <figcaption class="map-carousel-caption">
+                        Analysis in RStudio
+                    </figcaption>
+
+                </figure>
+
+
+                <figure class="map-carousel-slide">
+
+                    <img
+                        src="assets/sigi-rstudio-figure10.png"
+                        alt="Final terrain raster with municipal boundaries.">
+
+                    <figcaption class="map-carousel-caption">
+                        Final terrain map
+                    </figcaption>
+
+                </figure>
+
+
+                <button
+                    class="map-carousel-arrow map-carousel-prev"
+                    type="button"
+                    aria-label="Previous RStudio figure">
+                    ←
+                </button>
+
+
+                <button
+                    class="map-carousel-arrow map-carousel-next"
+                    type="button"
+                    aria-label="Next RStudio figure">
+                    →
+                </button>
+
+
+                <div class="map-carousel-dots">
+
+                    <button
+                        class="map-carousel-dot is-active"
+                        type="button"
+                        aria-label="Show RStudio interface">
+                    </button>
+
+                    <button
+                        class="map-carousel-dot"
+                        type="button"
+                        aria-label="Show final terrain map">
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <div class="map-eyebrow">
+                    SIG I · Universidad de Murcia
+                </div>
+
+                <h2>
+                    Terrain Statistics in R
+                </h2>
+
+                <p>
+                    A reproducible RStudio workflow mapping the terrain raster
+                    with municipal boundaries and comparing slope distributions
+                    across land-use categories.
+                </p>
+
+                <p>
+                    Use the arrows or dots to switch between the RStudio
+                    workflow and its final map output.
+                </p>
+
+
+                <div class="map-facts">
+
+                    <div>
+                        <span class="map-fact-label">
+                            Tool
+                        </span>
+
+                        <div class="map-fact-value">
+                            R / RStudio
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="map-fact-label">
+                            Type
+                        </span>
+
+                        <div class="map-fact-value">
+                            Spatial statistical analysis
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="map-fact-label">
+                            Area
+                        </span>
+
+                        <div class="map-fact-value">
+                            Región de Murcia, Spain
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="tags">
+
+                    <span class="tag">
+                        RStudio
+                    </span>
+
+                    <span class="tag">
+                        Spatial Statistics
+                    </span>
+
+                    <span class="tag">
+                        Data Visualisation
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             COMING NEXT
+        ========================= -->
+
+        <div class="coming-next">
+
+            <div class="map-eyebrow">
+                Coming next
+            </div>
+
+            <h3>
+                More maps on the way
+            </h3>
+
+            <p>
+                Additional cartographic projects and spatial analyses
+                will be added here as the portfolio develops.
+            </p>
+
+        </div>
+
+
+        <a
+            href="index.html#maps"
+            class="back-link">
+            ← Back to home
+        </a>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <strong>
+            Alexis Daniel Rodríguez Zambrano
+        </strong>
+
+        · Geospatial · GIS · Data Science · Environmental Research
+
+    </footer>
+
+
+
+    <!-- =========================
+         CAROUSEL SCRIPT
+    ========================= -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const carousels =
+                document.querySelectorAll("[data-map-carousel]");
+
+
+            carousels.forEach(function (carousel) {
+
+                const slides =
+                    carousel.querySelectorAll(".map-carousel-slide");
+
+                const prev =
+                    carousel.querySelector(".map-carousel-prev");
+
+                const next =
+                    carousel.querySelector(".map-carousel-next");
+
+                const dots =
+                    carousel.querySelectorAll(".map-carousel-dot");
+
+
+                let current = 0;
+
+
+                function showSlide(index) {
+
+                    current =
+                        (index + slides.length) % slides.length;
+
+
+                    slides.forEach(function (slide, i) {
+
+                        slide.classList.toggle(
+                            "is-active",
+                            i === current
+                        );
+
+                    });
+
+
+                    dots.forEach(function (dot, i) {
+
+                        dot.classList.toggle(
+                            "is-active",
+                            i === current
+                        );
+
+                    });
+
+                }
+
+
+                if (prev) {
+
+                    prev.addEventListener(
+                        "click",
+                        function () {
+                            showSlide(current - 1);
+                        }
+                    );
+
+                }
+
+
+                if (next) {
+
+                    next.addEventListener(
+                        "click",
+                        function () {
+                            showSlide(current + 1);
+                        }
+                    );
+
+                }
+
+
+                dots.forEach(function (dot, i) {
+
+                    dot.addEventListener(
+                        "click",
+                        function () {
+                            showSlide(i);
+                        }
+                    );
+
+                });
+
+            });
+
+        });
+
+    </script>
+
+
+</body>
+</html>
