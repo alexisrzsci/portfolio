@@ -59,7 +59,7 @@ window.PORTFOLIO = {
       "meta": "Collaborative Research · Arthropod Ecology · 2026",
       "category": "Ecology",
       "image": "assets/beetle-specimens.jpeg",
-      "summary": "Specimen processing, family-level identification and data management for a decadal study at the Robert J. Bernard Field Station.",
+      "summary": "Research assistant and poster co-author: specimen processing, family-level identification and data management for a decadal study at the Robert J. Bernard Field Station.",
       "tags": ["Field Research", "Taxonomy", "Data Management"],
       "url": "collaborative-research.html"
     }
