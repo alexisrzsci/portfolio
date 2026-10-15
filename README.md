@@ -27,6 +27,12 @@ portfolio/
   `Portfolio` before it and a stray ```` ``` ```` at the end; that switches the
   browser into "quirks mode" and can break the layout.)
 
+## After changing css/ or js/ files
+
+Browsers keep old CSS/JS for a while. In every `.html`, raise the number in
+`style.css?v=3`, `main.js?v=3`, etc. (e.g. to `?v=4`) so visitors get the new
+version straight away.
+
 ## Editing from the page
 
 1. Open `index.html` on your computer (double-click) and press **✎ Edit**
