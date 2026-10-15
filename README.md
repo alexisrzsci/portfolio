@@ -1,0 +1,52 @@
+# Portfolio — how it is organised
+
+```
+portfolio/
+├── index.html                  Home: About me → Maps → Projects → Research → Contact
+├── maps.html                   Interactive overview map + every map in detail
+├── ecuador.html                ┐
+├── hermit-crab.html            ├ Project pages
+├── collaborative-research.html ┘
+├── project-template.html       Copy this to start a new project page
+├── css/style.css               ONE stylesheet for every page
+├── js/data.js                  ONE list of projects, maps and contact details
+├── js/main.js                  Top bar, side index, footer, cards, maps, lightbox
+├── js/editor.js                The "✎ Edit" mode
+├── data/                       GeoJSON layers for interactive maps
+└── assets/                     All images
+```
+
+## Rules that avoid the old problems
+
+* The top bar, side index and footer are written **once** (in `js/main.js`) and
+  drawn on every page, so they can never get out of sync between pages.
+* Every card is **one** link that covers the whole card (image, title, text).
+  There are no links inside links, so a click always goes where you expect.
+* Anything with an `id` stops below the top bar, so headings are never hidden.
+* Every file starts with `<!DOCTYPE html>`. (The old files had the word
+  `Portfolio` before it and a stray ```` ``` ```` at the end; that switches the
+  browser into "quirks mode" and can break the layout.)
+
+## Editing from the page
+
+1. Open `index.html` on your computer (double-click) and press **✎ Edit**
+   (bottom-left). Online, add `?edit` to the address to see the button.
+2. **Text** in dashed areas: just type. Click an image to change its file,
+   Ctrl+click a link to change its address.
+3. **Projects / maps**: click a card (or **+ Project / + Map**) to edit, delete or
+   reorder. Images must be copied into `assets/`.
+4. Make it permanent:
+   * **Download data.js** → replace `js/data.js` (projects, maps, contact).
+   * **Download this page** → replace that `.html` file (text on the page).
+5. Commit and push to GitHub as usual.
+
+## Adding an interactive map
+
+* In the editor, a map has three options: an image, a **GeoJSON** file
+  (QGIS → right-click layer → Export → Save Features As → GeoJSON, CRS
+  **EPSG:4326**, save into `data/`), or an **embed** URL (qgis2web export
+  published online, ArcGIS Online web map, Felt…).
+* Its `coords` place a point on the overview map in `maps.html`.
+* GeoJSON files load when the site is online (GitHub Pages). Browsers block
+  them when you open the file by double-clicking — use the online site or
+  VS Code's "Live Server" to preview them.

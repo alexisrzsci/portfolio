@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- =====================================================
+         NEW PROJECT TEMPLATE
+         1. Copy this file and rename it (e.g. my-project.html)
+         2. Add the project in the editor (+ Project) and set
+            "Project page" to my-project.html — the card on the
+            home page and the previous/next links appear by themselves.
+         3. Change data-current="" at the bottom to the project id.
+         4. Fill in the text (here, or from the page in edit mode).
+         Every section with data-index="…" gets a stop in the
+         side index automatically. Delete the sections you don't need.
+    ====================================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Project description">
+    <title>Project title | Alexis Rodríguez</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+    <!-- Only needed if the page has an interactive map: -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body data-page="project">
+
+    <div data-render="topbar"></div>
+
+    <header class="p-hero" data-edit>
+        <div class="wrap p-hero__grid">
+            <div>
+                <div class="eyebrow">Category · Year</div>
+                <h1>Project title<br><em>second line</em></h1>
+                <p class="p-hero__subtitle">One sentence that explains the project.</p>
+                <p class="p-hero__intro">A short introduction of two or three lines.</p>
+                <div class="tags"><span class="tag">QGIS</span><span class="tag">Tag two</span></div>
+            </div>
+            <figure class="framed">
+                <img src="assets/climathon-map.png" alt="Describe the image">
+                <figcaption><strong>Caption title</strong>Caption text</figcaption>
+            </figure>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Text + facts -->
+        <section class="section" id="overview" data-index="Overview">
+            <div class="wrap" data-edit>
+                <div class="label">01 · Overview</div>
+                <h2>Section title</h2>
+                <div class="split">
+                    <div class="prose">
+                        <p>Paragraph one.</p>
+                        <p>Paragraph two.</p>
+                    </div>
+                    <dl class="facts">
+                        <div><dt>Area</dt><dd>Región de Murcia</dd></div>
+                        <div><dt>Tools</dt><dd>QGIS · R</dd></div>
+                        <div><dt>Date</dt><dd>2026</dd></div>
+                    </dl>
+                </div>
+            </div>
+        </section>
+
+        <!-- Three boxes -->
+        <section class="section section--tint" id="method" data-index="Method">
+            <div class="wrap" data-edit>
+                <div class="label">02 · Method</div>
+                <h2>How it was done</h2>
+                <div class="grid-3 mt">
+                    <div class="box"><span class="num">01</span><h3>Step one</h3><p>Text.</p></div>
+                    <div class="box"><span class="num">02</span><h3>Step two</h3><p>Text.</p></div>
+                    <div class="box"><span class="num">03</span><h3>Step three</h3><p>Text.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive map: a GeoJSON exported from QGIS (EPSG:4326) -->
+        <section class="section" id="map" data-index="Interactive map">
+            <div class="wrap" data-edit>
+                <div class="label">03 · Interactive map</div>
+                <h2>Explore the data</h2>
+                <div class="webmap" data-geojson="data/example.geojson" data-center="38,-1.4"></div>
+                <!-- OR an online map (qgis2web, ArcGIS Online, Felt…):
+                <div class="embed"><iframe src="https://…" title="Map" loading="lazy" allowfullscreen></iframe></div>
+                -->
+            </div>
+        </section>
+
+        <!-- Figure -->
+        <section class="section section--tint" id="results" data-index="Results">
+            <div class="wrap" data-edit>
+                <div class="label">04 · Results</div>
+                <h2>What I found</h2>
+                <figure class="figure">
+                    <div class="num">Figure 01</div>
+                    <h3>Figure title</h3>
+                    <img src="assets/sigi-land-suitability.png" alt="Describe the figure">
+                    <figcaption><p>Figure caption.</p></figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <div class="section" style="padding-top:56px">
+            <div class="wrap" data-render="pager" data-current="PROJECT-ID"></div>
+        </div>
+
+    </main>
+
+    <div data-render="footer"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/editor.js"></script>
+</body>
+</html>

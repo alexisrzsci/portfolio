@@ -1,952 +1,193 @@
-Portfolio
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
-    <meta
-        name="description"
-        content="Food Sovereignty in Ecuador — Alexis Daniel Rodríguez Zambrano">
-
-    <title>
-        Food Sovereignty in Ecuador | Alexis Rodríguez
-    </title>
-
-
-    <!-- FONTS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Food Sovereignty in Ecuador — Alexis Daniel Rodríguez Zambrano">
+    <title>Food Sovereignty in Ecuador | Alexis Rodríguez</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap"
-        rel="stylesheet">
-
-
-    <style>
-
-        :root {
-            --paper: #f5f3ec;
-            --paper-light: #fffdfa;
-            --sage: #e5ece6;
-            --ink: #18231f;
-            --muted: #5e6b64;
-            --green: #315f4c;
-            --green-light: #557966;
-            --warm: #b8795b;
-            --line: #d7ddd6;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: "DM Sans", Arial, sans-serif;
-            background: var(--paper);
-            color: var(--ink);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        a {
-            color: inherit;
-        }
-
-        ::selection {
-            background: #c8d8cb;
-            color: var(--ink);
-        }
-
-        /* =====================================================
-           NAVIGATION
-        ===================================================== */
-
-        nav {
-            height: 74px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 6.5%;
-            background: rgba(248, 248, 243, 0.93);
-            backdrop-filter: blur(14px);
-            border-bottom: 1px solid var(--line);
-        }
-
-        .nav-name {
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 1.8px;
-        }
-
-        nav a {
-            margin-left: 27px;
-            color: #53605a;
-            text-decoration: none;
-            font-size: 13px;
-            position: relative;
-        }
-
-        nav a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -7px;
-            width: 0;
-            height: 1px;
-            background: var(--green);
-            transition: width 0.25s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* =====================================================
-           HERO
-        ===================================================== */
-
-        .hero {
-            max-width: 1320px;
-            margin: auto;
-            padding: 95px 7vw 55px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-number {
-            position: absolute;
-            right: 7vw;
-            top: 50px;
-            font-size: 170px;
-            line-height: 1;
-            font-weight: 600;
-            color: rgba(49, 95, 76, 0.045);
-            user-select: none;
-        }
-
-        .eyebrow {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--green-light);
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 2.4px;
-            text-transform: uppercase;
-            margin-bottom: 22px;
-        }
-
-        .eyebrow::before {
-            content: "";
-            width: 36px;
-            height: 1px;
-            background: var(--warm);
-        }
-
-        h1 {
-            font-family: "Newsreader", Georgia, serif;
-            font-size: clamp(52px, 7vw, 92px);
-            line-height: 0.95;
-            font-weight: 400;
-            letter-spacing: -2.5px;
-            max-width: 1050px;
-            margin-bottom: 26px;
-        }
-
-        h1 em {
-            color: var(--green-light);
-            font-style: italic;
-        }
-
-        .hero-description {
-            max-width: 700px;
-            font-family: "Newsreader", Georgia, serif;
-            font-size: clamp(19px, 1.9vw, 24px);
-            line-height: 1.35;
-            color: #59675f;
-            margin-bottom: 24px;
-        }
-
-        /* =====================================================
-           HERO FACTS (replaces the old empty top metadata bar —
-           now sits directly under the hero, tight to the h1)
-        ===================================================== */
-
-        .hero-facts {
-            max-width: 1320px;
-            margin: auto;
-            padding: 0 7vw 60px;
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            border-top: 1px solid #d5dbd4;
-            border-bottom: 1px solid #d5dbd4;
-        }
-
-        .fact {
-            padding: 22px 20px;
-            border-left: 1px solid #d5dbd4;
-        }
-
-        .fact:first-child {
-            padding-left: 0;
-            border-left: 0;
-        }
-
-        .fact-label {
-            display: block;
-            color: #a86c50;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 1.6px;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-        }
-
-        .fact-value {
-            font-size: 13.5px;
-            line-height: 1.45;
-            color: #2c3c35;
-        }
-
-        /* =====================================================
-           CONTENT
-        ===================================================== */
-
-        .content {
-            max-width: 1080px;
-            margin: auto;
-            padding: 80px 7vw 90px;
-        }
-
-        .section {
-            margin-bottom: 80px;
-        }
-
-        .section-top {
-            display: flex;
-            align-items: baseline;
-            gap: 12px;
-            margin-bottom: 6px;
-        }
-
-        .section-number {
-            color: var(--warm);
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-        }
-
-        .section-label {
-            color: var(--green-light);
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 2.2px;
-            text-transform: uppercase;
-        }
-
-        h2 {
-            font-family: "Newsreader", Georgia, serif;
-            font-size: clamp(34px, 4.2vw, 48px);
-            line-height: 1.05;
-            font-weight: 400;
-            letter-spacing: -0.5px;
-            margin-bottom: 32px;
-        }
-
-        /* Two-column body: running text + a facts sidebar,
-           used for sections 01 and 02 so there's no dead gutter */
-
-        .section-body {
-            display: grid;
-            grid-template-columns: 1.4fr 300px;
-            gap: 55px;
-            align-items: start;
-        }
-
-        .section-body p {
-            color: #46564e;
-            font-size: 16.5px;
-            margin-bottom: 16px;
-        }
-
-        .sidebar {
-            border-top: 1px solid var(--line);
-        }
-
-        .sidebar-item {
-            padding: 15px 0;
-            border-bottom: 1px solid var(--line);
-        }
-
-        .sidebar-item .fact-label {
-            margin-bottom: 5px;
-        }
-
-        .sidebar-item .fact-value {
-            font-size: 14px;
-            color: #2c3c35;
-        }
-
-        /* =====================================================
-           QUESTIONS — a single callout box instead of a bare
-           indented list, so the section reads as one solid block
-        ===================================================== */
-
-        .question-box {
-            border-left: 3px solid var(--green);
-            background: var(--paper-light);
-            padding: 4px 30px;
-        }
-
-        .question-box .q {
-            padding: 20px 0;
-            border-bottom: 1px solid var(--line);
-            display: flex;
-            gap: 16px;
-            font-size: 16px;
-            color: #2e4038;
-        }
-
-        .question-box .q:last-child {
-            border-bottom: 0;
-        }
-
-        .question-box .q span {
-            color: var(--warm);
-            font-family: "Newsreader", Georgia, serif;
-            font-size: 15px;
-            font-weight: 600;
-            flex-shrink: 0;
-        }
-
-        /* =====================================================
-           CONTRIBUTION
-        ===================================================== */
-
-        .contribution-intro p {
-            color: #46564e;
-            font-size: 16.5px;
-            max-width: 720px;
-            margin-bottom: 28px;
-        }
-
-        .contribution-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            border-top: 1px solid #cfcbbf;
-            border-bottom: 1px solid #cfcbbf;
-        }
-
-        .contribution-card {
-            padding: 24px 22px;
-            border-left: 1px solid #cfcbbf;
-        }
-
-        .contribution-card:first-child {
-            border-left: 0;
-        }
-
-        .card-number {
-            color: var(--warm);
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            margin-bottom: 14px;
-        }
-
-        .contribution-card h3 {
-            font-family: "Newsreader", Georgia, serif;
-            font-size: 23px;
-            font-weight: 500;
-            color: var(--green);
-            margin-bottom: 10px;
-            line-height: 1.15;
-        }
-
-        .contribution-card p {
-            font-size: 13px;
-            color: #66716b;
-            line-height: 1.6;
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 22px;
-        }
-
-        .tag {
-            padding: 7px 11px;
-            border: 1px solid #cbd1c8;
-            color: #52635a;
-            font-size: 10px;
-            background: rgba(255, 255, 255, 0.28);
-        }
-
-        /* =====================================================
-           STORYMAP — smaller, contained embed instead of a
-           near-fullscreen iframe
-        ===================================================== */
-
-        .storymap-section {
-            position: relative;
-            background: var(--green);
-            color: #f5f2e9;
-            padding: 80px 7vw 90px;
-            overflow: hidden;
-        }
-
-        .storymap-section::before {
-            content: "GIS";
-            position: absolute;
-            right: -15px;
-            top: 20px;
-            font-family: "Newsreader", Georgia, serif;
-            font-size: 170px;
-            line-height: 1;
-            color: rgba(255, 255, 255, 0.035);
-            pointer-events: none;
-        }
-
-        .storymap-header {
-            max-width: 1080px;
-            margin: auto;
-            position: relative;
-            z-index: 2;
-            display: grid;
-            grid-template-columns: 1.3fr 1fr;
-            gap: 50px;
-            align-items: end;
-            margin-bottom: 34px;
-        }
-
-        .storymap-section .section-label {
-            color: #d8a58b;
-        }
-
-        .storymap-section h2 {
-            color: #f5f2e9;
-            margin-bottom: 14px;
-        }
-
-        .storymap-description {
-            color: #cad7d0;
-            font-size: 15px;
-        }
-
-        .storymap-link {
-            color: #bfcfc7;
-            font-size: 13px;
-        }
-
-        .storymap-link a {
-            color: #f0c5af;
-            text-decoration: none;
-            font-weight: 700;
-        }
-
-        .storymap-link a:hover {
-            text-decoration: underline;
-        }
-
-        .storymap-wrapper {
-            max-width: 900px;
-            margin: auto;
-            padding: 8px;
-            background: #f8f7f1;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 55px rgba(0, 0, 0, 0.18);
-            position: relative;
-            z-index: 2;
-        }
-
-        .storymap-wrapper iframe {
-            display: block;
-            width: 100%;
-            height: 480px;
-            border: 0;
-        }
-
-        /* =====================================================
-           OUTCOME
-        ===================================================== */
-
-        .outcome-section {
-            background: #e8eee9;
-            padding: 75px 7vw;
-        }
-
-        .outcome-inner {
-            max-width: 1080px;
-            margin: auto;
-        }
-
-        .outcome-layout {
-            display: grid;
-            grid-template-columns: 0.7fr 1.3fr;
-            gap: 60px;
-            margin-top: 28px;
-        }
-
-        .outcome-title {
-            font-family: "Newsreader", Georgia, serif;
-            font-size: 25px;
-            line-height: 1.25;
-            color: var(--green);
-        }
-
-        .outcome-text p {
-            font-size: 15.5px;
-            color: #59665f;
-            margin-bottom: 16px;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-top: 24px;
-            color: var(--green);
-            font-size: 12px;
-            font-weight: 700;
-            text-decoration: none;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
-        }
-
-        /* =====================================================
-           FOOTER
-        ===================================================== */
-
-        footer {
-            padding: 35px 6.5%;
-            background: #edf0eb;
-            color: #718078;
-            font-size: 11px;
-            border-top: 1px solid #d8ddd7;
-        }
-
-        footer strong {
-            color: #30443a;
-        }
-
-        /* =====================================================
-           MOBILE
-        ===================================================== */
-
-        @media (max-width: 850px) {
-
-            nav { padding: 0 5%; height: 66px; }
-            nav div:last-child { display: none; }
-
-            .hero { padding: 65px 6vw 40px; }
-            .hero-number { display: none; }
-
-            .hero-facts {
-                grid-template-columns: repeat(2, 1fr);
-                row-gap: 22px;
-                padding: 0 6vw 45px;
-            }
-            .fact { padding: 0; border-left: 0; }
-
-            .content { padding: 60px 6vw; }
-
-            .section-body { grid-template-columns: 1fr; gap: 26px; }
-
-            .contribution-grid,
-            .outcome-layout,
-            .storymap-header {
-                grid-template-columns: 1fr;
-            }
-
-            .contribution-card { border-left: 0; border-top: 1px solid #cfcbbf; }
-            .contribution-card:first-child { border-top: 0; }
-
-            .question-box { padding: 4px 20px; }
-
-            .storymap-section { padding: 60px 4vw 70px; }
-            .storymap-wrapper iframe { height: 420px; }
-
-            .outcome-section { padding: 60px 6vw; }
-        }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 42px; letter-spacing: -1px; }
-            .storymap-wrapper { padding: 5px; }
-            .storymap-wrapper iframe { height: 380px; }
-        }
-
-    </style>
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
+<body data-page="project">
 
-<body>
+    <div data-render="topbar"></div>
 
-
-   
-    <!-- =====================================================
-        NAVIGATION
-    ===================================================== -->
-
-    <nav>
-
-        <div class="nav-name">
-            ALEXIS RODRÍGUEZ
+    <!-- ================= HERO ================= -->
+    <header class="p-hero" data-edit>
+        <div class="wrap p-hero__grid">
+            <div>
+                <div class="eyebrow">Research Project · Ecuador · 2026</div>
+                <h1>Food Sovereignty<br><em>in Ecuador</em></h1>
+                <p class="p-hero__subtitle">
+                    An interdisciplinary exploration of food, land, environmental change,
+                    and Indigenous sovereignty.
+                </p>
+                <div class="tags">
+                    <span class="tag">ArcGIS StoryMaps</span>
+                    <span class="tag">GIS</span>
+                    <span class="tag">Environmental Research</span>
+                    <span class="tag">Spatial Visualization</span>
+                </div>
+            </div>
+            <figure class="framed">
+                <img src="assets/ecuador-food-sovereignty.png" alt="Terraced fields and villages in the Ecuadorian Andes">
+                <figcaption><strong>Andean landscape</strong>Pitzer in Ecuador — Semester Program</figcaption>
+            </figure>
         </div>
-
-        <div class="nav-links">
-
-            <a href="index.html#maps">
-                Maps
-            </a>
-
-            <a href="index.html#projects">
-                Projects
-            </a>
-
-            <a href="index.html#research">
-                Research
-            </a>
-
-            <a href="index.html#about">
-                About
-            </a>
-
-            <a href="index.html#contact">
-                Contact
-            </a>
-
-        </div>
-
-    </nav>
-
-
-
-    <!-- =====================================================
-         HERO
-    ===================================================== -->
-
-    <header class="hero">
-
-        <div class="hero-number">01</div>
-
-        <div class="eyebrow">Research Project · Ecuador · 2026</div>
-
-        <h1>
-            Food Sovereignty
-            <br>
-            <em>in Ecuador</em>
-        </h1>
-
-        <div class="hero-description">
-            An interdisciplinary exploration of food, land, environmental
-            change, and Indigenous sovereignty.
-        </div>
-
     </header>
 
+    <main>
 
-    <!-- =====================================================
-         HERO FACTS
-    ===================================================== -->
-
-    <section class="hero-facts">
-
-        <div class="fact">
-            <span class="fact-label">Context</span>
-            <div class="fact-value">Pitzer in Ecuador — Semester Program</div>
+        <!-- ================= KEY FACTS ================= -->
+        <div class="wrap" data-edit>
+            <dl class="facts facts--row">
+                <div><dt>Context</dt><dd>Pitzer in Ecuador — Semester Program</dd></div>
+                <div><dt>Type</dt><dd>Interdisciplinary Research</dd></div>
+                <div><dt>Output</dt><dd>ArcGIS StoryMap &amp; Program Proposal</dd></div>
+                <div><dt>Date</dt><dd>April 2026</dd></div>
+                <div><dt>Team</dt><dd>Abril Dedominici · Claire Kotapish · Claire Wang · Alexis Daniel Rodríguez Zambrano</dd></div>
+            </dl>
         </div>
 
-        <div class="fact">
-            <span class="fact-label">Type</span>
-            <div class="fact-value">Interdisciplinary Research</div>
-        </div>
-
-        <div class="fact">
-            <span class="fact-label">Output</span>
-            <div class="fact-value">ArcGIS StoryMap & Program Proposal</div>
-        </div>
-
-        <div class="fact">
-            <span class="fact-label">Date</span>
-            <div class="fact-value">April 2026</div>
-        </div>
-
-        <div class="fact">
-            <span class="fact-label">Team</span>
-            <div class="fact-value">Abril Dedominici · Claire Kotapish · Claire Wang
-            · Alexis Daniel Rodríguez Zambrano</div>
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         CONTENT
-    ===================================================== -->
-
-    <main class="content">
-
-
-        <!-- ABOUT -->
-
-        <section class="section">
-
-            <div class="section-top">
-                <span class="section-number">01</span>
-                <span class="section-label">About the project</span>
-            </div>
-
-            <h2>Food, land and sovereignty</h2>
-
-            <div class="section-body">
-
-                <div>
-                    <p>
-                        This project examines food sovereignty in Ecuador
-                        through an environmental, historical, social, and
-                        cultural lens.
-                    </p>
-                    <p>
-                        It explores how colonial land systems, resource
-                        extraction, environmental change, Indigenous food
-                        systems, and grassroots organizing continue to
-                        shape Ecuador's relationship with food and land.
-                    </p>
+        <!-- ================= 01 ABOUT ================= -->
+        <section class="section" id="about-project" data-index="The project">
+            <div class="wrap" data-edit>
+                <div class="label">01 · About the project</div>
+                <h2>Food, land and sovereignty</h2>
+                <div class="split">
+                    <div class="prose">
+                        <p>
+                            This project examines food sovereignty in Ecuador through an
+                            environmental, historical, social, and cultural lens.
+                        </p>
+                        <p>
+                            It explores how colonial land systems, resource extraction,
+                            environmental change, Indigenous food systems, and grassroots
+                            organizing continue to shape Ecuador's relationship with food and land.
+                        </p>
+                    </div>
+                    <dl class="facts">
+                        <div><dt>Region</dt><dd>Andes &amp; coastal Ecuador</dd></div>
+                        <div><dt>Lens</dt><dd>Environmental · historical · social · cultural</dd></div>
+                        <div><dt>Program</dt><dd>Pitzer in Ecuador, Semester Program</dd></div>
+                    </dl>
                 </div>
-
-                <div class="sidebar">
-                    <div class="sidebar-item">
-                        <span class="fact-label">Region</span>
-                        <div class="fact-value">Andes & coastal Ecuador</div>
-                    </div>
-                    <div class="sidebar-item">
-                        <span class="fact-label">Lens</span>
-                        <div class="fact-value">Environmental · historical · social · cultural</div>
-                    </div>
-                    <div class="sidebar-item">
-                        <span class="fact-label">Program</span>
-                        <div class="fact-value">Pitzer in Ecuador, Semester Program</div>
-                    </div>
-                </div>
-
             </div>
-
         </section>
 
-
-        <!-- RESEARCH QUESTIONS -->
-
-        <section class="section">
-
-            <div class="section-top">
-                <span class="section-number">02</span>
-                <span class="section-label">Research</span>
-            </div>
-
-            <h2>Questions we explored</h2>
-
-            <div class="section-body">
-
-                <div class="question-box">
-                    <div class="q"><span>01</span> How have colonial land systems shaped Ecuadorian food systems?</div>
-                    <div class="q"><span>02</span> How do environmental changes affect food sovereignty?</div>
-                    <div class="q"><span>03</span> How do Indigenous agricultural practices contribute to ecological resilience?</div>
-                    <div class="q"><span>04</span> How can food sovereignty be incorporated into the Pitzer in Ecuador program?</div>
+        <!-- ================= 02 QUESTIONS ================= -->
+        <section class="section section--tint" id="questions" data-index="Questions">
+            <div class="wrap" data-edit>
+                <div class="label">02 · Research</div>
+                <h2>Questions we explored</h2>
+                <div class="split">
+                    <ol class="qlist">
+                        <li data-n="01">How have colonial land systems shaped Ecuadorian food systems?</li>
+                        <li data-n="02">How do environmental changes affect food sovereignty?</li>
+                        <li data-n="03">How do Indigenous agricultural practices contribute to ecological resilience?</li>
+                        <li data-n="04">How can food sovereignty be incorporated into the Pitzer in Ecuador program?</li>
+                    </ol>
+                    <dl class="facts">
+                        <div><dt>Questions</dt><dd>4 guiding questions</dd></div>
+                        <div><dt>Framing</dt><dd>Land, ecology, culture, curriculum</dd></div>
+                        <div><dt>Approach</dt><dd>Interdisciplinary, field-informed</dd></div>
+                    </dl>
                 </div>
-
-                <div class="sidebar">
-                    <div class="sidebar-item">
-                        <span class="fact-label">Questions</span>
-                        <div class="fact-value">4 guiding questions</div>
-                    </div>
-                    <div class="sidebar-item">
-                        <span class="fact-label">Framing</span>
-                        <div class="fact-value">Land, ecology, culture, curriculum</div>
-                    </div>
-                    <div class="sidebar-item">
-                        <span class="fact-label">Approach</span>
-                        <div class="fact-value">Interdisciplinary, field-informed</div>
-                    </div>
-                </div>
-
             </div>
-
         </section>
 
-
-        <!-- CONTRIBUTION -->
-
-        <section class="section">
-
-            <div class="section-top">
-                <span class="section-number">03</span>
-                <span class="section-label">My contribution</span>
-            </div>
-
-            <h2>Geography as a way of connecting evidence</h2>
-
-            <div class="contribution-intro">
-                <p>
-                    I contributed to the research, writing, geographic
-                    analysis, and visual communication developed for this
-                    interdisciplinary project. My role focused on connecting
-                    environmental and social questions to Ecuadorian
-                    geography and helping translate research into an
-                    accessible spatial narrative.
+        <!-- ================= 03 CONTRIBUTION ================= -->
+        <section class="section" id="contribution" data-index="My contribution">
+            <div class="wrap" data-edit>
+                <div class="label">03 · My contribution</div>
+                <h2>Geography as a way of connecting evidence</h2>
+                <p class="lead">
+                    I contributed to the research, writing, geographic analysis, and visual
+                    communication developed for this interdisciplinary project. My role
+                    focused on connecting environmental and social questions to Ecuadorian
+                    geography and helping translate research into an accessible spatial narrative.
                 </p>
-            </div>
-
-            <div class="contribution-grid">
-
-                <div class="contribution-card">
-                    <div class="card-number">01 — ROLE</div>
-                    <h3>Researcher & Co-author</h3>
-                    <p>Contributed to collaborative research, synthesis, writing, and development of the final project narrative.</p>
+                <div class="grid-3 mt">
+                    <div class="box">
+                        <span class="num">01 — Role</span>
+                        <h3>Researcher &amp; Co-author</h3>
+                        <p>Contributed to collaborative research, synthesis, writing, and development of the final project narrative.</p>
+                    </div>
+                    <div class="box">
+                        <span class="num">02 — Focus</span>
+                        <h3>Geographic &amp; Environmental Analysis</h3>
+                        <p>Ecuadorian geography, environmental change, Indigenous food systems, land relations, and food sovereignty.</p>
+                    </div>
+                    <div class="box">
+                        <span class="num">03 — Methods</span>
+                        <h3>GIS &amp; Spatial Communication</h3>
+                        <p>GIS, ArcGIS StoryMaps, spatial visualization, interdisciplinary research, and visual communication.</p>
+                    </div>
                 </div>
-
-                <div class="contribution-card">
-                    <div class="card-number">02 — FOCUS</div>
-                    <h3>Geographic & Environmental Analysis</h3>
-                    <p>Ecuadorian geography, environmental change, Indigenous food systems, land relations, and food sovereignty.</p>
-                </div>
-
-                <div class="contribution-card">
-                    <div class="card-number">03 — METHODS</div>
-                    <h3>GIS & Spatial Communication</h3>
-                    <p>GIS, ArcGIS StoryMaps, spatial visualization, interdisciplinary research, and visual communication.</p>
-                </div>
-
             </div>
-
-            <div class="tags">
-                <span class="tag">ArcGIS StoryMaps</span>
-                <span class="tag">GIS</span>
-                <span class="tag">Environmental Research</span>
-                <span class="tag">Spatial Visualization</span>
-                <span class="tag">Academic Research</span>
-            </div>
-
         </section>
 
+        <!-- ================= 04 STORYMAP (interactive) ================= -->
+        <section class="section section--dark" id="storymap" data-index="StoryMap">
+            <div class="wrap">
+                <div class="section-head" data-edit>
+                    <div>
+                        <div class="label">04 · Interactive StoryMap</div>
+                        <h2>Explore the project</h2>
+                        <p class="lead">
+                            Maps, historical research, environmental analysis, Indigenous food
+                            systems, and our proposal for the Pitzer in Ecuador Semester Program.
+                        </p>
+                    </div>
+                    <a class="link-arrow" style="color:#f0c5af" href="https://arcg.is/1KD9r83" target="_blank" rel="noopener noreferrer">Open the original StoryMap →</a>
+                </div>
+                <div class="embed">
+                    <iframe src="https://storymaps.arcgis.com/stories/7a2fb06cdf8a4e32819a41753605356b"
+                            title="Food Sovereignty in Ecuador — ArcGIS StoryMap"
+                            loading="lazy" allowfullscreen allow="geolocation"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 05 OUTCOME ================= -->
+        <section class="section section--tint" id="outcome" data-index="Outcome">
+            <div class="wrap" data-edit>
+                <div class="label">05 · Project outcome</div>
+                <h2>From research to proposal</h2>
+                <div class="split">
+                    <div class="prose">
+                        <p>
+                            Our research resulted in a proposal for incorporating food
+                            sovereignty into the Pitzer in Ecuador Semester Program.
+                        </p>
+                        <p>
+                            The proposal includes field-based learning opportunities and
+                            potential collaboration with local organizations working around
+                            food systems, Indigenous rights, agroecology, and environmental justice.
+                        </p>
+                    </div>
+                    <div class="callout" style="margin-top:0">
+                        <p>Translating research into an educational proposal.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Previous / next project (from js/data.js) -->
+        <div class="section" style="padding-top:56px">
+            <div class="wrap" data-render="pager" data-current="ecuador"></div>
+        </div>
 
     </main>
 
+    <div data-render="footer"></div>
 
-    <!-- =====================================================
-         STORYMAP
-    ===================================================== -->
-
-    <section class="storymap-section">
-
-        <div class="storymap-header">
-
-            <div>
-                <div class="section-label">Interactive StoryMap</div>
-                <h2>Explore the project</h2>
-                <p class="storymap-description">
-                    Maps, historical research, environmental analysis,
-                    Indigenous food systems, and our proposal for the
-                    Pitzer in Ecuador Semester Program.
-                </p>
-            </div>
-
-            <p class="storymap-link">
-                Prefer the original on ArcGIS?
-                <br>
-                <a href="https://arcg.is/1KD9r83" target="_blank" rel="noopener noreferrer">
-                    Open the original StoryMap →
-                </a>
-            </p>
-
-        </div>
-
-        <div class="storymap-wrapper">
-            <iframe
-                src="https://storymaps.arcgis.com/stories/7a2fb06cdf8a4e32819a41753605356b"
-                width="100%"
-                height="480"
-                frameborder="0"
-                allowfullscreen
-                allow="geolocation">
-            </iframe>
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         OUTCOME
-    ===================================================== -->
-
-    <section class="outcome-section">
-
-        <div class="outcome-inner">
-
-            <div class="section-label">Project outcome</div>
-            <h2>From research to proposal</h2>
-
-            <div class="outcome-layout">
-
-                <div class="outcome-title">
-                    Translating research into an educational proposal.
-                </div>
-
-                <div class="outcome-text">
-                    <p>
-                        Our research resulted in a proposal for incorporating
-                        food sovereignty into the Pitzer in Ecuador Semester
-                        Program.
-                    </p>
-                    <p>
-                        The proposal includes field-based learning
-                        opportunities and potential collaboration with local
-                        organizations working around food systems, Indigenous
-                        rights, agroecology, and environmental justice.
-                    </p>
-                </div>
-
-            </div>
-
-            <a href="index.html#projects" class="back-link">← Back to projects</a>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         FOOTER
-    ===================================================== -->
-
-    <footer>
-        <strong>Alexis Daniel Rodríguez Zambrano</strong>
-        · Geospatial · GIS · Data Science · Environmental Research
-    </footer>
-
-
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/editor.js"></script>
 </body>
-
 </html>

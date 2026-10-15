@@ -1,0 +1,12 @@
+{
+  "type": "FeatureCollection",
+  "name": "example - towns mentioned in the SIG I projects (replace with your own QGIS export, EPSG:4326)",
+  "features": [
+    { "type": "Feature", "properties": { "name": "Murcia" }, "geometry": { "type": "Point", "coordinates": [-1.1307, 37.9922] } },
+    { "type": "Feature", "properties": { "name": "Lorca" }, "geometry": { "type": "Point", "coordinates": [-1.7007, 37.6771] } },
+    { "type": "Feature", "properties": { "name": "Caravaca de la Cruz" }, "geometry": { "type": "Point", "coordinates": [-1.8636, 38.1059] } },
+    { "type": "Feature", "properties": { "name": "Cartagena" }, "geometry": { "type": "Point", "coordinates": [-0.9864, 37.6057] } },
+    { "type": "Feature", "properties": { "name": "Mazarrón" }, "geometry": { "type": "Point", "coordinates": [-1.3147, 37.5986] } },
+    { "type": "Feature", "properties": { "name": "Santomera" }, "geometry": { "type": "Point", "coordinates": [-1.0489, 38.0614] } }
+  ]
+}
