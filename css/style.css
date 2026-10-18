@@ -524,10 +524,13 @@ h3 { font-family: var(--serif); font-weight: 500; line-height: 1.15; }
 .pager strong { font-family: var(--serif); font-weight: 400; font-size: 21px; }
 
 /* Map list (maps.html) */
-.map-entry { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr); gap: 56px; align-items: center; padding: 64px 0; border-top: 1px solid var(--line); }
+.map-entry { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 48px; align-items: center; padding: 48px 0; border-top: 1px solid var(--line); }
 .map-entry:nth-of-type(even) .map-entry__visual { order: 2; }
-.map-entry h2 { font-size: clamp(27px, 3vw, 35px); margin-bottom: 14px; }
-.map-entry p { color: #46564e; font-size: 15px; margin-bottom: 12px; }
+.map-entry > div > .num { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin-bottom: 12px; }
+.map-entry h2 { font-size: clamp(22px, 2.2vw, 28px); line-height: 1.15; letter-spacing: -.3px; margin-bottom: 12px; }
+.map-entry p { color: #46564e; font-size: 14.5px; line-height: 1.7; margin-bottom: 10px; }
+.map-entry .facts--row dd { font-size: 13px; }
+.map-entry .tags { margin-top: 14px; }
 .map-entry__visual { border: 1px solid var(--line); background: #f7f7f4; box-shadow: 0 18px 45px rgba(0, 0, 0, .1); }
 
 /* Small gallery (several images in one map entry) */
@@ -775,7 +778,12 @@ body.is-editing .card::before {
 
 /* Coursework label */
 .badge--course { left: auto; right: 10px; background: rgba(23, 35, 31, .82); color: #f0e7dc; }
-.course-note { display: inline-block; margin-left: 8px; padding: 1px 7px; border: 1px solid #c9b6a6; color: #8a6450; font-size: 9.5px; letter-spacing: 1px; }
+.box ul { list-style: none; margin-top: 4px; }
+.box li { position: relative; padding: 7px 0 7px 14px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--muted); line-height: 1.55; }
+.box li:first-child { border-top: 0; }
+.box li::before { content: ""; position: absolute; left: 0; top: 15px; width: 5px; height: 5px; border-radius: 50%; background: var(--warm); }
+.box li strong { color: var(--ink); font-weight: 600; }
+.course-note { display: inline-block; padding: 1px 7px; line-height: 1.6; border: 1px solid #c9b6a6; color: #8a6450; font-size: 9.5px; letter-spacing: 1px; }
 
 /* Dark maps band on the home page */
 .section--dark .section-head .lead { color: #c5d0ca; }

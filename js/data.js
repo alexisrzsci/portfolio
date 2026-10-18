@@ -61,7 +61,7 @@ window.PORTFOLIO = {
     {
       "id": "hermit-crab",
       "title": "Hermit Crabs & Microplastic Exposure",
-      "meta": "Marine ecology experiment · 2026",
+      "meta": "Marine ecology experiment · Scripps College · 2026",
       "category": "Ecology",
       "image": "assets/hermit-crab-photo.jpeg",
       "summary": "Behavioural responses of <em>Pagurus samuelis</em> to nominal microplastic levels. My part: results, figures and statistical interpretation in R.",
