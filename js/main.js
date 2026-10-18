@@ -50,7 +50,7 @@
             { label: "About", href: HOME + "#about", key: "home" },
             { label: "Maps", href: "maps.html", key: "maps" },
             { label: "Projects", href: HOME + "#projects", key: "project" },
-            { label: "Research", href: HOME + "#research", key: "research" },
+            { label: "Experience", href: HOME + "#experience", key: "experience" },
             { label: "Contact", href: HOME + "#contact", key: "contact" }
         ];
     }
@@ -224,6 +224,7 @@
         return (
             '<article class="card" data-kind="maps" data-id="' + esc(m.id) + '">' +
             (interactive ? '<span class="badge">Interactive</span>' : "") +
+            (m.coursework ? '<span class="badge badge--course">Coursework</span>' : "") +
             '<div class="card__media"><img src="' + esc(m.image) + '" alt="" loading="lazy"></div>' +
             '<div class="card__body">' +
             '<div class="card__meta">' + esc(m.meta) + "</div>" +
@@ -283,7 +284,7 @@
                     '<article class="map-entry" id="' + esc(m.id) + '" data-index="' + esc(m.title) + '" data-kind="maps" data-id="' + esc(m.id) + '">' +
                     mapVisual(m) +
                     "<div>" +
-                    '<div class="num">' + esc(m.meta) + "</div>" +
+                    '<div class="num">' + esc(m.meta) + (m.coursework ? '<span class="course-note">Coursework</span>' : "") + "</div>" +
                     "<h2>" + esc(m.title) + "</h2>" +
                     (m.text || []).map(function (t) { return "<p>" + esc(t) + "</p>"; }).join("") +
                     '<dl class="facts facts--row">' +
@@ -435,6 +436,52 @@
         });
     }
 
+    /* ---------- tabs: <div data-tabs> with .tabs__nav buttons + .tabs__panel ---------- */
+
+    function initTabs() {
+        $all("[data-tabs]").forEach(function (box) {
+            var buttons = $all(".tabs__nav button", box);
+            var panels = $all(".tabs__panel", box);
+            function show(i) {
+                buttons.forEach(function (b, k) { b.classList.toggle("is-active", k === i); b.setAttribute("aria-selected", k === i ? "true" : "false"); });
+                panels.forEach(function (p, k) { p.classList.toggle("is-active", k === i); });
+            }
+            buttons.forEach(function (b, i) {
+                b.setAttribute("type", "button");
+                b.addEventListener("click", function () { show(i); });
+            });
+            show(0);
+        });
+    }
+
+    /* ---------- CV button: shown only when site.cv has a file ---------- */
+
+    function renderCv() {
+        $all("[data-cv]").forEach(function (a) {
+            if (DATA.site.cv) { a.setAttribute("href", DATA.site.cv); a.hidden = false; }
+            else a.hidden = true;
+        });
+    }
+
+    /* ---------- gentle reveal while scrolling ---------- */
+
+    function initReveal() {
+        if (!("IntersectionObserver" in window)) return;
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        var targets = $all(".section .wrap > *, .card, .box, .cv li, .figure, .doc, .media, .map-entry");
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (en) {
+                if (en.isIntersecting) { en.target.classList.add("is-visible"); io.unobserve(en.target); }
+            });
+        }, { rootMargin: "0px 0px -8% 0px" });
+        targets.forEach(function (el) {
+            /* things already on screen (or above it) appear immediately */
+            if (el.getBoundingClientRect().top < window.innerHeight) return;
+            el.classList.add("reveal");
+            io.observe(el);
+        });
+    }
+
     /* ---------- render everything ---------- */
 
     function renderData() {
@@ -450,6 +497,8 @@
     renderFooter();
     renderGeojsonMaps();
     renderSideIndex();
+    renderCv();
+    initTabs();
     initLightbox();
 
     /* If the page was opened with #something, jump there now that
@@ -467,6 +516,9 @@
         /* again once images have loaded and heights are final */
         window.addEventListener("load", jump);
     }
+
+    /* after the hash jump, so the right things count as "on screen" */
+    setTimeout(initReveal, 80);
 
     /* Public API used by js/editor.js */
     window.Portfolio = {

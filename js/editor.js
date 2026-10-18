@@ -203,6 +203,7 @@
             ["tool", "Tool"], ["type", "Type of analysis"], ["area", "Area"],
             ["tags", "Tags", "Separate with commas"],
             ["coords", "Location on the overview map", "latitude, longitude — e.g. 37.99, -1.13"],
+            ["coursework", "Coursework?", "Write yes to show a “Coursework” label, leave empty if not"],
             ["gallery", "Extra figures (optional)", "One per line:  assets/file.png | caption", "textarea"],
             ["embed", "Interactive web map URL (optional)", "qgis2web / ArcGIS Online / Felt link — shown instead of the image"],
             ["geojson", "GeoJSON layer (optional)", "e.g. data/my-layer.geojson (exported from QGIS in EPSG:4326)"],
@@ -216,12 +217,14 @@
         if (key === "tags") return v.join(", ");
         if (key === "text") return v.join("\n\n");
         if (key === "coords") return v.join(", ");
+        if (key === "coursework") return v ? "yes" : "";
         if (key === "gallery") return v.map(function (g) { return g.src + " | " + g.caption; }).join("\n");
         return v;
     }
 
     function fromField(key, raw) {
         raw = raw.trim();
+        if (key === "coursework") return /^(yes|sí|si|true|1)$/i.test(raw) ? true : undefined;
         if (key === "tags") return raw ? raw.split(",").map(function (s) { return s.trim(); }).filter(Boolean) : [];
         if (key === "text") return raw ? raw.split(/\n\s*\n/).map(function (s) { return s.replace(/\s+/g, " ").trim(); }) : [];
         if (key === "coords") {
@@ -334,7 +337,8 @@
         var data = clone(P.data());
         var s = data.site;
         var keys = [["name", "Full name"], ["short", "Name in the top bar"], ["tagline", "Tagline"],
-            ["email", "Email"], ["linkedin", "LinkedIn URL"], ["github", "GitHub URL (empty = hidden)"]];
+            ["email", "Email"], ["linkedin", "LinkedIn URL"], ["github", "GitHub URL (empty = hidden)"],
+            ["cv", "CV file, e.g. assets/CV-Alexis.pdf (empty = button hidden)"]];
         var m = modal("<h3>Contact details</h3><p>Used in the top bar and footer of every page.</p>" +
             keys.map(function (k) {
                 return '<div class="field"><label>' + k[1] + '</label><input name="' + k[0] + '" value="' + esc(s[k[0]] || "") + '"></div>';
@@ -383,8 +387,8 @@
 
         $all("[data-ui], .leaflet-control-container", doc).forEach(function (el) { el.remove(); });
         $all("[contenteditable]", doc).forEach(function (el) { el.removeAttribute("contenteditable"); });
-        $all(".zoomable", doc).forEach(function (el) {
-            el.classList.remove("zoomable");
+        $all(".zoomable, .reveal, .is-visible", doc).forEach(function (el) {
+            el.classList.remove("zoomable", "reveal", "is-visible");
             if (!el.getAttribute("class")) el.removeAttribute("class");
         });
         var body = doc.querySelector("body");

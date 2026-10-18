@@ -313,7 +313,7 @@ h3 { font-family: var(--serif); font-weight: 500; line-height: 1.15; }
 .upcoming li { display: flex; gap: 12px; align-items: baseline; font-size: 14.5px; color: var(--ink-soft); }
 .upcoming li strong { font-weight: 600; color: var(--ink); }
 .pill {
-    flex-shrink: 0;
+    flex-shrink: 0; min-width: 84px; text-align: center;
     padding: 2px 8px; border: 1px solid var(--warm); color: var(--warm);
     font-size: 9.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
 }
@@ -685,4 +685,125 @@ body.is-editing .card::before {
     .webmap { height: 360px; }
     .pager a:last-child { text-align: left; }
     .editbar .editbar__hint { display: none; }
+}
+
+
+/* =========================================================
+   13. PROFILE ADDITIONS
+   identity line · status card · at-a-glance · experience
+   timeline · tabs · coursework badge · reveal on scroll
+========================================================= */
+
+/* Who I am, in one line under the name */
+.identity {
+    display: flex; flex-wrap: wrap; gap: 6px 18px;
+    margin: -8px 0 22px;
+    font-size: 13.5px; color: var(--muted);
+}
+.identity span { display: inline-flex; align-items: center; gap: 7px; }
+.identity span + span::before {
+    content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--warm);
+    margin-right: 4px;
+}
+
+/* "Currently" card: what I'm looking for + upcoming positions */
+.status {
+    margin: 26px 0 6px;
+    padding: 18px 20px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--green);
+}
+.status__goal { font-size: 15px; color: var(--ink); margin-bottom: 12px; }
+.status__goal strong { color: var(--green); font-weight: 600; }
+.status .upcoming { margin: 0; }
+
+/* At a glance (top of every project page) */
+.glance {
+    display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));
+    margin-top: -42px; position: relative; z-index: 2;
+    background: var(--paper-light); border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+}
+.glance > div { padding: 18px 18px 20px; }
+.glance > div + div { border-left: 1px solid var(--line); }
+.glance dt {
+    font-size: 9.5px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; color: #a86c50; margin-bottom: 6px;
+}
+.glance dd { font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
+.glance dd strong { color: var(--ink); font-weight: 600; }
+
+/* Experience & education timeline */
+.cv { list-style: none; position: relative; max-width: 860px; }
+.cv::before { content: ""; position: absolute; left: 118px; top: 8px; bottom: 8px; border-left: 1px dashed #b8c4bb; }
+.cv li { display: grid; grid-template-columns: 100px 1fr; gap: 36px; padding: 16px 0; position: relative; }
+.cv li::before {
+    content: ""; position: absolute; left: 113px; top: 24px;
+    width: 11px; height: 11px; border-radius: 50%;
+    background: var(--paper-light); border: 2px solid var(--green-light);
+}
+.cv li.is-key::before { background: var(--warm); border-color: var(--warm); }
+.cv time { font-size: 12px; font-weight: 700; letter-spacing: .5px; color: var(--green); padding-top: 2px; text-align: right; }
+.cv h3 { font-size: 20px; margin-bottom: 3px; }
+.cv p { font-size: 13.5px; color: var(--muted); }
+.cv a { color: var(--green); font-weight: 600; text-decoration: none; }
+.cv a:hover { text-decoration: underline; }
+.cv .pill { margin-left: 6px; vertical-align: 2px; }
+
+/* Tabs (figure viewer) */
+.tabs__nav { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: -1px; position: relative; z-index: 1; }
+.tabs__nav button {
+    padding: 9px 14px; border: 1px solid var(--line); border-bottom-color: transparent;
+    background: transparent; color: var(--muted); font: 600 12.5px var(--sans); cursor: pointer;
+}
+.tabs__nav button:hover { color: var(--green); }
+.tabs__nav button.is-active { background: #fff; color: var(--ink); border-color: var(--line); border-bottom-color: #fff; }
+.tabs__panel { display: none; background: #fff; border: 1px solid var(--line); padding: 24px; }
+.tabs__panel.is-active { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(220px, .8fr); gap: 30px; align-items: center; }
+.tabs__panel img { width: 100%; border: 1px solid #edf0ed; }
+.tabs__panel h3 { font-size: 22px; margin-bottom: 8px; }
+.tabs__panel p { color: var(--muted); font-size: 14px; }
+.tabs__panel p + p { margin-top: 10px; }
+
+/* Small media strip (4 items) */
+.grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.grid-4 .media__frame { aspect-ratio: 4 / 3; }
+.grid-4 .media__caption { display: block; padding: 12px 14px 14px; }
+.grid-4 .media__caption strong { font-size: 16px; }
+.grid-4 .media__caption p { font-size: 12px; }
+
+/* Coursework label */
+.badge--course { left: auto; right: 10px; background: rgba(23, 35, 31, .82); color: #f0e7dc; }
+.course-note { display: inline-block; margin-left: 8px; padding: 1px 7px; border: 1px solid #c9b6a6; color: #8a6450; font-size: 9.5px; letter-spacing: 1px; }
+
+/* Dark maps band on the home page */
+.section--dark .section-head .lead { color: #c5d0ca; }
+.section--dark .link-arrow { color: #f0c5af; }
+.section--dark .carousel__btn { background: rgba(255, 255, 255, .06); border-color: rgba(255, 255, 255, .22); color: #f2f4ef; }
+.section--dark .carousel__btn:hover { background: rgba(255, 255, 255, .14); }
+.section--dark .card { border-color: rgba(255, 255, 255, .08); box-shadow: none; color: var(--ink); }
+
+/* Gentle reveal on scroll (only when JS adds .reveal; respects reduced motion) */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+}
+
+@media (max-width: 980px) {
+    .glance { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 0; }
+    .glance > div + div { border-left: 0; }
+    .glance > div { border-bottom: 1px solid var(--line); }
+    .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .tabs__panel.is-active { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+    .glance { grid-template-columns: 1fr; }
+    .cv::before { left: 6px; }
+    .cv li { grid-template-columns: 1fr; gap: 4px; padding-left: 28px; }
+    .cv li::before { left: 1px; }
+    .cv time { text-align: left; }
+    .grid-4 { grid-template-columns: 1fr; }
 }

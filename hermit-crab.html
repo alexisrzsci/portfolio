@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Marine ecology research project investigating behavioural responses of Pagurus samuelis to experimental microplastic exposure.">
+    <meta name="description" content="Marine ecology experiment on behavioural responses of Pagurus samuelis to nominal microplastic exposure — results, figures and statistical interpretation.">
     <title>Hermit Crabs &amp; Microplastics | Alexis Rodríguez</title>
 
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23315f4c'/%3E%3Cpath d='M6 21c4-6 8-6 10-3s6 3 10-3' fill='none' stroke='%23f0c5af' stroke-width='2.4' stroke-linecap='round'/%3E%3Cpath d='M6 13c4-6 8-6 10-3s6 3 10-3' fill='none' stroke='%23fffdfa' stroke-width='2.4' stroke-linecap='round' opacity='.75'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=3">
+    <link rel="stylesheet" href="css/style.css?v=4">
 </head>
 
 <body data-page="project">
@@ -20,22 +21,17 @@
     <header class="p-hero" data-edit>
         <div class="wrap p-hero__grid">
             <div>
-                <div class="eyebrow">Marine Ecology · Research Project</div>
+                <div class="eyebrow">Marine Ecology · Experiment · 2026</div>
                 <h1>Hermit Crabs<br><em>&amp; Microplastics</em></h1>
                 <p class="p-hero__subtitle">
-                    Behavioural responses of <em>Pagurus samuelis</em> to experimental
-                    microplastic exposure.
-                </p>
-                <p class="p-hero__intro">
-                    An undergraduate marine ecology investigation examining whether increasing
-                    microplastic concentrations are associated with changes in movement,
-                    feeding behaviour, inactivity, and motor coordination.
+                    Do increasing microplastic concentrations change how
+                    <em>Pagurus samuelis</em> moves, feeds and keeps its balance?
                 </p>
                 <div class="tags">
-                    <span class="tag">Marine Ecology</span>
-                    <span class="tag">Experimental Research</span>
+                    <span class="tag">Experimental Design</span>
                     <span class="tag">Behavioural Analysis</span>
-                    <span class="tag">Data Visualization</span>
+                    <span class="tag">R / RStudio</span>
+                    <span class="tag">Statistics</span>
                 </div>
             </div>
             <figure class="framed">
@@ -47,309 +43,138 @@
 
     <main>
 
-        <!-- ================= 01 OVERVIEW ================= -->
-        <section class="section" id="overview" data-index="Overview">
+        <!-- ================= AT A GLANCE ================= -->
+        <div class="wrap" data-edit>
+            <dl class="glance">
+                <div><dt>Question</dt><dd>Does microplastic exposure affect hermit crab behaviour?</dd></div>
+                <div><dt>My role</dt><dd><strong>Results stage:</strong> data interpretation, figures, statistics and presentation of findings</dd></div>
+                <div><dt>Design</dt><dd>0 · 5 · 10 g/L (nominal) × 7 crabs, 5-minute trials</dd></div>
+                <div><dt>Result</dt><dd>Clear directional patterns, but no test reached p &lt; 0.05 (closest: p = 0.057)</dd></div>
+                <div><dt>Tools</dt><dd>R / RStudio · Kruskal–Wallis · Fisher's exact · Spearman</dd></div>
+            </dl>
+        </div>
+
+        <!-- ================= 01 MY ROLE ================= -->
+        <section class="section" id="role" data-index="My role">
             <div class="wrap" data-edit>
-                <div class="label">01 · Project overview</div>
-                <h2>A behavioural approach to microplastic exposure.</h2>
-                <div class="split">
-                    <div>
-                        <p class="lead" style="margin-bottom:18px">
-                            This marine ecology project investigated whether exposure to different
-                            concentrations of microplastics affected the behaviour of the
-                            blue-banded hermit crab, <em>Pagurus samuelis</em>.
-                        </p>
-                        <div class="prose">
-                            <p>
-                                The experiment compared three exposure treatments: a control group
-                                with no added microplastics, an intermediate treatment of 5 g/L, and
-                                a high treatment of 10 g/L. Seven individual crabs were observed
-                                under each treatment.
-                            </p>
-                            <p>
-                                Behavioural responses were recorded during standardized five-minute
-                                trials in individual seawater dishes. The observations focused on
-                                movement patterns, inactivity, food-directed behaviour, feeding,
-                                and loss of postural control such as flipping.
-                            </p>
-                        </div>
-                        <div class="callout">
-                            <div class="label">Research question</div>
-                            <p>Do microplastic concentrations affect <em>Pagurus samuelis</em> behaviour?</p>
-                        </div>
-                    </div>
-                    <dl class="facts">
-                        <div><dt>Species</dt><dd><em>Pagurus samuelis</em></dd></div>
-                        <div><dt>Treatments</dt><dd>0 · 5 · 10 g/L</dd></div>
-                        <div><dt>Replication</dt><dd>7 crabs per treatment</dd></div>
-                        <div><dt>Total individuals</dt><dd>21 hermit crabs</dd></div>
-                        <div><dt>Trial duration</dt><dd>Up to 5 minutes per individual</dd></div>
-                        <div><dt>Primary focus</dt><dd>Behavioural response</dd></div>
-                    </dl>
+                <div class="label">01 · My role</div>
+                <h2>From raw observations to a careful conclusion.</h2>
+                <div class="grid-3">
+                    <div class="box"><span class="num">01</span><h3>Results analysis</h3><p>Worked with the behavioural dataset to find the patterns across the three treatments that best explained the outcome.</p></div>
+                    <div class="box"><span class="num">02</span><h3>Data visualisation</h3><p>Developed and interpreted the figures on inactivity, food response, behaviour classes and dose-response trends.</p></div>
+                    <div class="box"><span class="num">03</span><h3>Scientific communication</h3><p>Presented the findings, separating visible trends from results that reached statistical significance.</p></div>
                 </div>
             </div>
         </section>
 
-        <!-- ================= 02 MY ROLE ================= -->
-        <section class="section section--tint" id="role" data-index="My role">
+        <!-- ================= 02 DESIGN ================= -->
+        <section class="section section--tint" id="design" data-index="Design">
             <div class="wrap" data-edit>
-                <div class="label">02 · My contribution</div>
-                <h2>My role in the project</h2>
+                <div class="label">02 · Experimental design</div>
+                <h2>Exposure, acclimation, observation.</h2>
                 <p class="lead">
-                    I was primarily responsible for the results stage of the project. My
-                    contribution involved organizing and interpreting behavioural observations,
-                    developing and reading the figures, evaluating statistical outputs, and
-                    communicating the main findings for the final scientific presentation.
+                    Three 37.85 L seawater tanks held the control, 5 g/L and 10 g/L treatments,
+                    with polypropylene nurdles in perforated bags for about a week. Seven crabs per
+                    treatment were acclimated, then observed one by one for up to five minutes in a
+                    15 cm dish with food placed on the opposite side. We recorded
+                    <strong>activity</strong>, <strong>food response</strong> and
+                    <strong>coordination</strong> (flipping, erratic movement).
                 </p>
-                <div class="grid-3 mt">
-                    <div class="box">
-                        <span class="num">01</span>
-                        <h3>Results analysis</h3>
-                        <p>I worked with the behavioural dataset to identify patterns across the three microplastic treatments and determine which responses were most informative for interpreting the experimental outcome.</p>
-                    </div>
-                    <div class="box">
-                        <span class="num">02</span>
-                        <h3>Data visualization</h3>
-                        <p>I developed and interpreted figures showing inactivity, food-related behaviour, behavioural classifications, and potential dose-response relationships.</p>
-                    </div>
-                    <div class="box">
-                        <span class="num">03</span>
-                        <h3>Scientific communication</h3>
-                        <p>I translated the statistical results into a clear scientific narrative, distinguishing observed behavioural trends from findings that reached statistical significance.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- ================= 03 DESIGN ================= -->
-        <section class="section" id="methods" data-index="Design">
-            <div class="wrap" data-edit>
-                <div class="label">03 · Experimental design</div>
-                <h2>From exposure to observation.</h2>
-                <p class="lead">
-                    The experimental design exposed hermit crabs to different concentrations of
-                    microplastics and then measured behavioural responses during standardized
-                    observation trials.
-                </p>
-                <div class="grid-3 mt">
-                    <div class="box">
-                        <span class="num">01 · Exposure</span>
-                        <h3>Three treatments</h3>
-                        <p>Three 37.85 L seawater tanks represented the control, 5 g/L, and 10 g/L treatments. Polypropylene nurdles were measured according to the intended exposure concentration and placed in perforated bags within the tanks for approximately one week.</p>
-                    </div>
-                    <div class="box">
-                        <span class="num">02 · Acclimation</span>
-                        <h3>Controlled conditions</h3>
-                        <p>Seven hermit crabs were assigned to each treatment and acclimated to their respective tanks before behavioural trials. Food, seawater conditions, and treatment assignment were kept consistent across the experimental groups.</p>
-                    </div>
-                    <div class="box">
-                        <span class="num">03 · Behaviour</span>
-                        <h3>Five-minute trials</h3>
-                        <p>Each crab was placed individually in an approximately 15 cm diameter seawater dish. Food was introduced at the opposite side of the dish and behaviour was observed for a maximum of five minutes.</p>
-                    </div>
-                </div>
-
-                <div class="box mt" style="background:var(--sage)">
-                    <h3>What was recorded?</h3>
-                    <p>The behavioural protocol combined continuous measurements with categorical observations. This allowed the experiment to capture both the timing of responses and broader changes in movement patterns.</p>
-                    <div class="grid-3" style="margin-top:20px">
-                        <div class="box"><h3 style="font-size:19px">Activity</h3><p>Time spent inactive and overall movement patterns.</p></div>
-                        <div class="box"><h3 style="font-size:19px">Food response</h3><p>Time to food attempt, contact with food, and feeding behaviour.</p></div>
-                        <div class="box"><h3 style="font-size:19px">Coordination</h3><p>Flipping, loss of postural control, and erratic movement.</p></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ================= 04 DOCUMENTATION ================= -->
-        <section class="section section--tint" id="documentation" data-index="Documentation">
-            <div class="wrap" data-edit>
-                <div class="label">04 · Experimental documentation</div>
-                <h2>The experiment in context.</h2>
-                <p class="lead">
-                    Photographs and video documentation provide visual context for the
-                    experimental system, exposure treatments, and behavioural observations.
-                </p>
-                <div class="grid-2 mt">
+                <div class="grid-4 mt">
                     <figure class="media">
-                        <div class="media__frame"><img src="assets/tank-experiment.jpg" alt="Control seawater tank"></div>
-                        <figcaption class="media__caption"><span class="num">01</span><div><strong>Control seawater tank</strong><p>Experimental seawater tank representing the control treatment, with no added polypropylene nurdles.</p></div></figcaption>
+                        <div class="media__frame"><img src="assets/tank-experiment.webp" alt="Control seawater tank"></div>
+                        <figcaption class="media__caption"><strong>Control tank</strong><p>No added nurdles.</p></figcaption>
                     </figure>
                     <figure class="media">
-                        <div class="media__frame"><img src="assets/tanks.jpg" alt="Microplastic exposure treatment tank"></div>
-                        <figcaption class="media__caption"><span class="num">02</span><div><strong>Microplastic exposure treatment</strong><p>Experimental seawater tank showing the polypropylene nurdle bag used for the 5 g/L microplastic treatment. The 10 g/L treatment used two equivalent bags to achieve the intended higher exposure.</p></div></figcaption>
+                        <div class="media__frame"><img src="assets/tanks.webp" alt="Microplastic exposure treatment tank"></div>
+                        <figcaption class="media__caption"><strong>Exposure tank</strong><p>One nurdle bag for 5 g/L; two for 10 g/L.</p></figcaption>
                     </figure>
                     <figure class="media">
-                        <div class="media__frame"><img src="assets/trial-dishes.png" alt="Behavioural trial dishes"></div>
-                        <figcaption class="media__caption"><span class="num">03</span><div><strong>Behavioural trial dishes</strong><p>Individual dishes used for the five-minute behavioural trials. Crabs from the control, 5 g/L, and 10 g/L treatments were observed individually under the same trial procedure.</p></div></figcaption>
+                        <div class="media__frame"><img src="assets/trial-dishes.webp" alt="Behavioural trial dishes"></div>
+                        <figcaption class="media__caption"><strong>Trial dishes</strong><p>Same procedure for every crab.</p></figcaption>
                     </figure>
                     <figure class="media">
                         <div class="media__frame"><iframe src="https://drive.google.com/file/d/12T3Zp8J0jHTw4dym-gjIENkSXNrbvlgd/preview" title="Behavioural observation video" allow="autoplay" allowfullscreen loading="lazy"></iframe></div>
-                        <figcaption class="media__caption"><span class="num">04</span><div><strong>Behavioural observation</strong><p>Video documentation of an individual hermit crab during a behavioural trial, illustrating the type of observation used to classify movement and food response.</p></div></figcaption>
+                        <figcaption class="media__caption"><strong>A trial on video</strong><p>How movement and food response were classified.</p></figcaption>
                     </figure>
                 </div>
             </div>
         </section>
 
-        <!-- ================= 05 RESULTS ================= -->
+        <!-- ================= 03 RESULTS (tabs) ================= -->
         <section class="section" id="results" data-index="Results">
             <div class="wrap" data-edit>
-                <div class="label">05 · Results</div>
-                <h2>Behaviour changed with exposure, but the evidence was not statistically conclusive.</h2>
-                <p class="lead">
-                    The results revealed several directional behavioural patterns across the
-                    exposure treatments. However, with only seven individuals per treatment,
-                    none of the statistical tests reached the conventional significance
-                    threshold of <strong>p &lt; 0.05</strong>.
+                <div class="label">03 · Results</div>
+                <h2>Patterns visible, evidence not conclusive.</h2>
+                <p class="lead" style="margin-bottom:28px">
+                    Exposed crabs tended to be more inactive, more erratic and to flip more often.
+                    With seven crabs per treatment, none of these differences reached p &lt; 0.05.
                 </p>
 
-                <figure class="figure">
-                    <div class="num">Figure 01</div>
-                    <h3>Inactivity time and time to food attempt</h3>
-                    <img src="assets/figure-1-boxplots.png" alt="Boxplots showing inactivity time and time to food attempt">
-                    <figcaption>
-                        <p>Each point represents an individual hermit crab. The boxplots summarize the distribution of behavioural measurements across the three microplastic treatments.</p>
-                        <p>Inactivity was lowest and more consistent in the control group, while the exposed groups showed greater variability. The difference approached conventional significance but did not cross the p &lt; 0.05 threshold (Kruskal–Wallis, p = 0.057).</p>
-                        <p>Time to food attempt did not show a clear progressive pattern across concentration levels.</p>
-                    </figcaption>
-                </figure>
-
-                <figure class="figure">
-                    <div class="num">Figure 02</div>
-                    <h3>Behavioural patterns across individuals</h3>
-                    <img src="assets/figure-2-behavior.png" alt="Behavioural patterns by microplastic concentration">
-                    <figcaption>
-                        <p>The behavioural classifications showed a shift in the types of responses observed across the treatments.</p>
-                        <p>The control group showed predominantly calm or retreating responses. Behaviour became more mixed at 5 g/L, while erratic classifications became more prominent at 10 g/L.</p>
-                        <p>In the 10 g/L treatment, 5 of 7 individuals were classified as showing erratic behaviour. This is a descriptive pattern and should not be interpreted as proof of a statistically significant treatment effect.</p>
-                    </figcaption>
-                </figure>
-
-                <figure class="figure">
-                    <div class="num">Figure 03</div>
-                    <h3>Spearman correlations: behaviour vs. concentration</h3>
-                    <img src="assets/figure-3-spearman.png" alt="Spearman correlations between behaviour and microplastic concentration">
-                    <figcaption>
-                        <p>Spearman rank correlations were used to examine whether behavioural responses changed progressively as microplastic concentration increased from 0 to 5 to 10 g/L.</p>
-                        <p>The relationships were weak and none were statistically significant. Time not moving and flipping both showed positive correlations of approximately <strong>rho = 0.26</strong>.</p>
-                        <p>These values indicate weak directional trends rather than statistically demonstrated dose-response relationships.</p>
-                    </figcaption>
-                </figure>
-            </div>
-        </section>
-
-        <!-- ================= 06 KEY FINDINGS ================= -->
-        <section class="section section--dark" id="findings" data-index="Key findings">
-            <div class="wrap" data-edit>
-                <div class="label">06 · Key findings</div>
-                <h2>What did the experiment show?</h2>
-                <p class="lead">
-                    The figures reveal three main descriptive patterns. These observations are
-                    useful for interpreting the experiment, but they should be distinguished
-                    from statistically significant effects.
-                </p>
-                <div class="grid-3 mt">
-                    <div class="box"><h3>More inactivity</h3><p>Inactivity was greater and more variable in the exposed treatments, with the closest statistical result occurring for inactivity time (Kruskal–Wallis, p = 0.057).</p></div>
-                    <div class="box"><h3>More erratic behaviour</h3><p>Erratic behavioural classifications became more prominent with increasing concentration, reaching 5 of 7 individuals at 10 g/L.</p></div>
-                    <div class="box"><h3>More flipping</h3><p>Flipping showed a weak positive relationship with concentration and was descriptively more common at higher exposure levels.</p></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ================= 07 STATISTICS ================= -->
-        <section class="section" id="statistics" data-index="Statistics">
-            <div class="wrap" data-edit>
-                <div class="label">07 · Statistical interpretation</div>
-                <h2>Interpreting significance carefully.</h2>
-                <div class="split" style="grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)">
-                    <div>
-                        <div class="prose">
-                            <p>Continuous behavioural variables such as inactivity time and time to food attempt were analysed using the Kruskal–Wallis test.</p>
-                            <p>Binary behaviours such as feeding, contact with food, and flipping were analysed using Fisher's Exact Test. This approach was appropriate for the small sample size and low expected frequencies.</p>
-                            <p>The statistical results did not provide conventional evidence of significant differences between treatments. The closest result was inactivity time, with <strong>p = 0.057</strong>.</p>
-                        </div>
-                        <div class="stat mt">
-                            <strong>p = 0.057</strong>
-                            <span>Time not moving · closest observed result to the conventional significance threshold</span>
-                        </div>
+                <div data-tabs>
+                    <div class="tabs__nav" role="tablist">
+                        <button>Inactivity &amp; food</button>
+                        <button>Behaviour classes</button>
+                        <button>Dose–response</button>
+                        <button>Statistics</button>
                     </div>
-                    <figure class="figure" style="margin-top:0">
+
+                    <figure class="tabs__panel">
+                        <img src="assets/figure-1-boxplots.png" alt="Boxplots showing inactivity time and time to food attempt">
+                        <figcaption>
+                            <h3>Inactivity and time to food attempt</h3>
+                            <p>Inactivity was lowest and most consistent in the control group and more variable in the exposed groups (Kruskal–Wallis, p = 0.057).</p>
+                            <p>Time to food attempt showed no clear progressive pattern.</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="tabs__panel">
+                        <img src="assets/figure-2-behavior.png" alt="Behavioural patterns by microplastic concentration">
+                        <figcaption>
+                            <h3>Behaviour classes by treatment</h3>
+                            <p>Calm or retreating responses dominated the control; behaviour was mixed at 5 g/L, and 5 of 7 crabs were classed as erratic at 10 g/L.</p>
+                            <p>A descriptive pattern, not a significant effect.</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="tabs__panel">
+                        <img src="assets/figure-3-spearman.png" alt="Spearman correlations between behaviour and microplastic concentration">
+                        <figcaption>
+                            <h3>Behaviour vs. concentration</h3>
+                            <p>Spearman correlations across 0, 5 and 10 g/L were weak and non-significant. Time not moving and flipping both showed rho ≈ 0.26.</p>
+                            <p>Weak directional trends, not a demonstrated dose–response.</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="tabs__panel">
                         <img src="assets/statistical-summary-table.png" alt="Statistical summary showing Kruskal-Wallis and Fisher's Exact Test results">
+                        <figcaption>
+                            <h3>Tests used</h3>
+                            <p>Kruskal–Wallis for continuous variables (inactivity, time to food attempt) and Fisher's exact test for binary behaviours (feeding, contact with food, flipping), suited to the small sample.</p>
+                        </figcaption>
                     </figure>
                 </div>
             </div>
         </section>
 
-        <!-- ================= 08 INTERPRETATION ================= -->
-        <section class="section section--tint" id="interpretation" data-index="Interpretation">
+        <!-- ================= 04 WHAT IT MEANS ================= -->
+        <section class="section section--dark" id="meaning" data-index="What it means">
             <div class="wrap" data-edit>
-                <div class="label">08 · Interpretation</div>
-                <h2>Biological patterns vs. statistical evidence.</h2>
-                <div class="split" style="grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr)">
-                    <div class="callout" style="margin-top:0">
-                        <p>The experiment revealed behavioural patterns, but the statistical evidence was not conclusive.</p>
-                    </div>
-                    <div class="prose">
-                        <p>Increasing exposure was associated descriptively with greater inactivity, more erratic movement, and more frequent flipping. These observations suggest that behaviour may have been affected, particularly at higher exposure concentrations.</p>
-                        <p>However, none of the statistical tests reached the conventional threshold of p &lt; 0.05. The sample contained only seven crabs per treatment, limiting statistical power and making individual variation especially important.</p>
-                        <p>Another limitation was the preparation of the microplastic treatments. The polypropylene nurdles did not fully disperse during the exposure period. Therefore, the nominal concentrations of 5 and 10 g/L should not necessarily be interpreted as precise measurements of the actual concentration experienced by the animals.</p>
-                        <p>The results are therefore best interpreted as preliminary evidence of behavioural patterns rather than definitive proof of a concentration-dependent effect.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ================= 09 CONCLUSION ================= -->
-        <section class="section section--light closing" id="conclusion" data-index="Conclusion">
-            <div class="wrap" data-edit>
-                <div class="label">09 · Conclusion</div>
-                <h2>A preliminary indication of behavioural disruption.</h2>
-                <p class="lead">
-                    The experiment identified descriptive changes in hermit crab behaviour across
-                    the microplastic treatments, particularly in inactivity, erratic movement, and
-                    apparent loss of coordination. Because the statistical tests did not reach
-                    conventional significance, the results do not provide sufficient evidence to
-                    conclusively reject the null hypothesis.
-                </p>
-                <div class="box">
-                    <span class="num">Main takeaway</span>
-                    <p>The most important outcome was the identification of behavioural patterns that justify further investigation using a larger sample, better exposure verification, and a more controlled experimental design.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ================= 10 FUTURE RESEARCH ================= -->
-        <section class="section" id="future" data-index="Future research">
-            <div class="wrap" data-edit>
-                <div class="label">10 · Future research</div>
-                <h2>What would strengthen the study?</h2>
-                <p class="lead">
-                    The results provide several clear directions for improving the experimental
-                    design and extending the behavioural questions investigated.
-                </p>
+                <div class="label">04 · What it means</div>
+                <h2>A preliminary signal worth testing properly.</h2>
                 <div class="grid-3 mt">
-                    <div class="box"><span class="num">01 · Sample size</span><h3>Increase replication</h3><p>Repeating the experiment with a larger number of individuals per treatment would increase statistical power and make it easier to distinguish biological effects from individual variation.</p></div>
-                    <div class="box"><span class="num">02 · Exposure</span><h3>Verify actual concentrations</h3><p>Future experiments should directly measure the concentration of microplastics in the water rather than relying only on nominal treatment concentrations.</p></div>
-                    <div class="box"><span class="num">03 · Behaviour</span><h3>Expand behavioural measures</h3><p>Further studies could examine shell selection, burrowing, predator responses, feeding efficiency, or other behaviours that may reveal longer-term effects of exposure.</p></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ================= 11 REFLECTION ================= -->
-        <section class="section section--tint" id="reflection" data-index="Reflection">
-            <div class="wrap" data-edit>
-                <div class="label">11 · Reflection</div>
-                <h2>My contribution to the research process.</h2>
-                <div class="split">
-                    <div class="prose">
-                        <p>My main responsibility in the project was the results component. This involved moving from raw behavioural observations to a structured interpretation of the experimental data.</p>
-                        <p>One of the most important aspects of this stage was learning to distinguish between a visible biological pattern and statistical evidence. The figures made several trends apparent, but the statistical tests showed that the sample was not large enough to establish those differences with conventional significance.</p>
-                        <p>This process strengthened my understanding of scientific data visualization and helped me communicate uncertainty without overstating the conclusions of the experiment.</p>
+                    <div class="box">
+                        <span class="num">Interpretation</span>
+                        <p>Behaviour may be affected at higher exposure, but the evidence is not enough to reject the null hypothesis.</p>
                     </div>
                     <div class="box">
-                        <span class="num">Role in project</span>
-                        <h3>Results &amp; Scientific Communication</h3>
-                        <p>Data interpretation · Statistical visualization · Behavioural analysis · Figure development · Presentation of findings</p>
+                        <span class="num">Limitations</span>
+                        <p>Only 7 crabs per treatment, and the nurdles did not fully disperse, so 5 and 10 g/L are nominal, not measured, concentrations.</p>
+                    </div>
+                    <div class="box">
+                        <span class="num">Next steps</span>
+                        <p>Larger samples, measured exposure concentrations and further behaviours such as shell selection or predator response.</p>
                     </div>
                 </div>
             </div>
@@ -363,8 +188,8 @@
 
     <div data-render="footer"></div>
 
-    <script src="js/data.js?v=3"></script>
-    <script src="js/main.js?v=3"></script>
-    <script src="js/editor.js?v=3"></script>
+    <script src="js/data.js?v=4"></script>
+    <script src="js/main.js?v=4"></script>
+    <script src="js/editor.js?v=4"></script>
 </body>
 </html>

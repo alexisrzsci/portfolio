@@ -46,6 +46,21 @@ version straight away.
    * **Download this page** → replace that `.html` file (text on the page).
 5. Commit and push to GitHub as usual.
 
+## Adding your CV
+
+Put the PDF in `assets/` (e.g. `assets/CV-Alexis.pdf`), then in the editor
+open **Contact details** and fill in **CV file** (or set `"cv"` in `js/data.js`).
+The "Download CV" button on the home page appears automatically.
+
+## Exporting a map properly from QGIS
+
+A GIS portfolio is judged on cartography. For each map:
+
+1. **Project → New Print Layout**, add the map.
+2. Add **title, legend, scale bar, north arrow, source/CRS note** (EPSG:25830).
+3. **Layout → Export as Image** (PNG, 200–300 dpi), save into `assets/`.
+4. In the editor, click the map card and change **Image**.
+
 ## Adding an interactive map
 
 * In the editor, a map has three options: an image, a **GeoJSON** file
