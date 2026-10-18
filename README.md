@@ -46,11 +46,17 @@ version straight away.
    * **Download this page** → replace that `.html` file (text on the page).
 5. Commit and push to GitHub as usual.
 
-## Adding your CV
+## Updating the CV
 
-Put the PDF in `assets/` (e.g. `assets/CV-Alexis.pdf`), then in the editor
-open **Contact details** and fill in **CV file** (or set `"cv"` in `js/data.js`).
-The "Download CV" button on the home page appears automatically.
+The CV is written in `cv/CV-Alexis-Rodriguez.html` (English, one A4 page).
+
+1. Edit the text in that file.
+2. Open it in Chrome or Edge → **Ctrl+P** → *Save as PDF*, paper **A4**,
+   margins **Default**, **untick "Headers and footers"**.
+3. Save it as `assets/CV-Alexis-Rodriguez.pdf` (replace the old one).
+
+The "Download CV" button uses the path in `"cv"` in `js/data.js`
+(or **Contact details → CV file** in the editor). Empty = button hidden.
 
 ## Exporting a map properly from QGIS
 

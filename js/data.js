@@ -34,7 +34,7 @@ window.PORTFOLIO = {
     "email": "alexisrz.sci@gmail.com",
     "linkedin": "https://www.linkedin.com/in/alexisdanielrodriguez",
     "github": "",
-    "cv": ""
+    "cv": "assets/CV-Alexis-Rodriguez.pdf"
   },
 
   "projects": [
@@ -44,7 +44,7 @@ window.PORTFOLIO = {
       "meta": "Team research project · April 2026",
       "category": "GIS & Society",
       "image": "assets/ecuador-food-sovereignty.png",
-      "summary": "An ArcGIS StoryMap connecting Ecuadorian geography, Indigenous food systems, land relations and environmental change, with a proposal for the Pitzer in Ecuador program.",
+      "summary": "An ArcGIS StoryMap on land, environmental change and Indigenous food systems in Ecuador. I wrote the chapters on colonization &amp; resource extraction and on Indigenous food systems today.",
       "tags": ["ArcGIS StoryMaps", "GIS", "Spatial Storytelling"],
       "url": "ecuador.html"
     },
