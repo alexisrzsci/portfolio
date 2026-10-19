@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <!--
-    CV SOURCE (English). Edit the text here, then export it to
-    assets/CV-Alexis-Rodriguez.pdf (see README → "Updating the CV").
+    CV SOURCE (English) — one A4 page.
+    Edit the text here, then export it to assets/CV-Alexis-Rodriguez.pdf
+    (see README → "Updating the CV").
 -->
 <html lang="en">
 <head>
@@ -13,7 +14,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
         font-family: "DejaVu Serif", Georgia, "Times New Roman", serif;
-        font-size: 8.85pt; line-height: 1.27; color: var(--muted);
+        font-size: 8.85pt; line-height: 1.28; color: var(--muted);
         -webkit-print-color-adjust: exact; print-color-adjust: exact;
     }
     header { border-bottom: 1.3pt solid var(--navy); padding-bottom: 6pt; margin-bottom: 9pt; }
@@ -22,22 +23,25 @@
     .contact span + span::before { content: "·"; margin: 0 6pt; }
     h2 {
         font-size: 9.8pt; letter-spacing: 1pt; text-transform: uppercase; color: var(--navy);
-        border-bottom: .7pt solid var(--navy); padding-bottom: 1.5pt; margin: 7.5pt 0 4pt;
+        border-bottom: .7pt solid var(--navy); padding-bottom: 1.5pt; margin: 8pt 0 4.5pt;
     }
     section:first-child h2 { margin-top: 0; }
-    .profile { text-align: left; margin-bottom: 2pt; }
+    .profile { margin-bottom: 5pt; }
     .cols { display: grid; grid-template-columns: 1.55fr 1fr; gap: 15pt; }
-    .item { margin-bottom: 4.5pt; break-inside: avoid; }
-    .item h3 { font-size: 9.4pt; color: var(--ink); font-weight: 700; display: inline; }
-    .date { color: var(--accent); font-style: italic; font-size: 8.6pt; white-space: nowrap; }
-    .date::before { content: "· "; color: var(--muted); font-style: normal; }
+    .item { margin-bottom: 5pt; break-inside: avoid; }
+    .head { display: flex; justify-content: space-between; align-items: baseline; gap: 8pt; }
+    .item h3 { font-size: 9.4pt; color: var(--ink); font-weight: 700; }
+    .date { color: var(--accent); font-style: italic; font-size: 8.5pt; white-space: nowrap; flex-shrink: 0; }
     .where { font-style: italic; font-size: 8.7pt; }
     ul { list-style: none; margin-top: 1.5pt; }
     li { position: relative; padding-left: 9pt; margin-bottom: 1pt; }
     li::before { content: "•"; position: absolute; left: 1pt; color: var(--accent); }
-    .plain li { padding-left: 9pt; }
     strong { color: var(--ink); }
     em { font-style: italic; }
+    .courses { display: grid; grid-template-columns: 64pt 1fr; gap: 1.5pt 6pt; margin-top: 3pt; }
+    .courses dt { color: var(--navy); font-weight: 700; font-size: 8.3pt; }
+    .courses dd { margin: 0; }
+    .pub { padding-left: 9pt; text-indent: -9pt; }
     .skills dt { color: var(--ink); font-weight: 700; font-size: 8.9pt; margin-top: 3pt; }
     .skills dd { margin-bottom: 1pt; }
     a { color: inherit; text-decoration: none; }
@@ -58,12 +62,10 @@
 <section>
     <h2>Profile</h2>
     <p class="profile">
-        Final-year Environmental Sciences student at the Universidad de Murcia combining Geographic
-        Information Systems (QGIS, GRASS GIS, ArcGIS) with ecological research. Experience in field sampling,
-        taxonomic identification and data analysis gained in research projects in Spain and the United States
-        (Pomona College, Pitzer College). I want to apply GIS and ecology to environmental problems such as
-        biodiversity monitoring, habitat fragmentation and land-use change, and I am applying to the
-        Copernicus Master in Digital Earth.
+        Final-year Environmental Sciences student combining GIS and spatial analysis with field ecology,
+        with research experience in Spain and the United States and a co-authored conference poster.
+        Focused on using spatial data to address environmental problems such as biodiversity loss,
+        habitat fragmentation and land-use change; applying to the Copernicus Master in Digital Earth.
     </p>
 </section>
 
@@ -74,60 +76,72 @@
         <section>
             <h2>Education</h2>
             <div class="item">
-                <h3>Universidad de Murcia — BSc Environmental Sciences</h3> <span class="date">2023 – 2027</span>
-                <p class="where">Faculty of Biology · GPA 8.23/10 · Courses: Population and Community Ecology, Environmental Impact Assessment, GIS</p>
+                <div class="head"><h3>BSc Environmental Sciences</h3> <span class="date">2023 – 2027</span></div>
+                <p class="where">Universidad de Murcia, Faculty of Biology · GPA 8.23/10</p>
+                <dl class="courses">
+                    <dt>Coursework</dt><dd>GIS I · GIS II · Population and Community Ecology · Environmental Impact Assessment</dd>
+                    <dt>Current courses</dt><dd>Environmental Remote Sensing · Climate Change: Adaptation and Mitigation</dd>
+                </dl>
             </div>
             <div class="item">
-                <h3>Pitzer College, The Claremont Colleges (California, USA)</h3> <span class="date">Spring 2026</span>
-                <p class="where">Exchange programme (ISEP) · Courses: Marine Ecology, Insect Community Ecology, Tropical Ecology</p>
+                <div class="head"><h3>Exchange semester — Pitzer College</h3> <span class="date">Spring 2026</span></div>
+                <p class="where">The Claremont Colleges, California, USA · ISEP programme</p>
+                <dl class="courses">
+                    <dt>Coursework</dt><dd>Marine Ecology · Insect Community Ecology · Tropical Ecology</dd>
+                </dl>
             </div>
         </section>
 
         <section>
             <h2>Research experience</h2>
             <div class="item">
-                <h3>Internal Student — Dept. of Ecology and Hydrology</h3> <span class="date">2026 – present</span>
-                <p class="where">Universidad de Murcia · Collaboration Grant (Beca de Colaboración) awarded for 2026–27</p>
+                <div class="head"><h3>Internal Student — Ecology and Hydrology</h3> <span class="date">2026 – present</span></div>
+                <p class="where">Dept. of Ecology and Hydrology, Universidad de Murcia · Collaboration Grant (Beca de Colaboración) awarded for 2026–27</p>
             </div>
             <div class="item">
-                <h3>Research Assistant — Robert J. Bernard Field Station</h3> <span class="date">2026</span>
+                <div class="head"><h3>Research Assistant — Robert J. Bernard Field Station</h3> <span class="date">2026</span></div>
                 <p class="where">Pomona College, Claremont, California</p>
                 <ul>
-                    <li>Taxonomic identification and data analysis for a ten-year study of beetle assemblages</li>
-                    <li>Creation and maintenance of the specimen inventory; entomological pinning</li>
-                    <li>Poster co-author, SCAS Annual Meeting (see Communications)</li>
+                    <li>Processed, pinned and inventoried pitfall-trap beetle specimens for a ten-year assemblage study (2013–14 vs. 2023–24, 32 sites)</li>
+                    <li>Family-level identification from morphological characters; consistent records across both decades</li>
+                    <li>Co-authored the resulting poster, presented at the SCAS 2026 Annual Meeting</li>
                 </ul>
             </div>
             <div class="item">
-                <h3>Internal Student — Dept. of Zoology and Physical Anthropology</h3> <span class="date">Sept 2024 – June 2026</span>
-                <p class="where">Universidad de Murcia</p>
+                <div class="head"><h3>Internal Student — Zoology</h3> <span class="date">Sept 2024 – June 2026</span></div>
+                <p class="where">Dept. of Zoology and Physical Anthropology, Universidad de Murcia</p>
                 <ul>
-                    <li>Field sampling and processing of ecological data</li>
-                    <li>Quantitative image analysis (ImageJ)</li>
+                    <li>Field sampling and processing of ecological data over two academic years</li>
+                    <li>Quantitative image analysis with ImageJ</li>
                 </ul>
             </div>
         </section>
 
         <section>
-            <h2>GIS &amp; research projects</h2>
+            <h2>Conference poster</h2>
+            <p class="pub">
+                Leonard SB, Gutierrez Muniz M, <strong>Rodriguez Zambrano A</strong>, et al. (2026).
+                <em>10 Year Assessment of Changes in Beetle Assemblages at the Robert J. Bernard Field Station.</em>
+                Southern California Academy of Sciences Annual Meeting, Chapman University, Orange, CA, 18 April 2026.
+            </p>
+        </section>
+
+        <section>
+            <h2>Selected projects</h2>
             <div class="item">
-                <h3>Renaturalising the Río Segura</h3> <span class="date">2025</span>
+                <div class="head"><h3>Renaturalising the Río Segura</h3> <span class="date">2025</span></div>
                 <p class="where">Climathon Murcia (CETENMA)</p>
-                <ul><li>Multi-criteria distance analysis in QGIS to locate river stretches suitable for renaturalisation</li></ul>
+                <ul><li>Multi-criteria distance analysis in QGIS to identify river stretches suitable for renaturalisation</li></ul>
             </div>
             <div class="item">
-                <h3>Spatial analysis coursework (GIS I)</h3> <span class="date">Universidad de Murcia</span>
-                <ul><li>Land suitability with AHP &amp; TOPSIS in R, least-cost routing, forest fragmentation and connectivity, spatial SQL (QGIS, GRASS GIS)</li></ul>
-            </div>
-            <div class="item">
-                <h3>Food Sovereignty in Ecuador — ArcGIS StoryMap</h3> <span class="date">2026</span>
+                <div class="head"><h3>Food Sovereignty in Ecuador (StoryMap)</h3> <span class="date">2026</span></div>
                 <p class="where">Pitzer College · team of four</p>
                 <ul><li>Researched and wrote the chapters <em>Impacts of Colonization &amp; Resource Extraction</em> and <em>Indigenous Food Systems Today</em></li></ul>
             </div>
             <div class="item">
-                <h3>Microplastic Effects on Hermit Crab Behaviour</h3> <span class="date">2026</span>
+                <div class="head"><h3>Microplastics and Hermit Crab Behaviour</h3> <span class="date">2026</span></div>
                 <p class="where">Scripps College</p>
-                <ul><li>Marine ecology experiment; responsible for results, figures and statistical analysis in R</li></ul>
+                <ul><li>Responsible for the results of a 3-treatment, 21-individual experiment: figures and statistical tests in R</li></ul>
             </div>
         </section>
     </div>
@@ -137,10 +151,12 @@
         <section>
             <h2>Skills</h2>
             <dl class="skills">
-                <dt>GIS &amp; spatial analysis</dt>
-                <dd>QGIS, GRASS GIS, ArcGIS (basic), ArcGIS StoryMaps, multi-criteria analysis, raster modelling</dd>
+                <dt>GIS</dt>
+                <dd>QGIS, GRASS GIS, ArcGIS (basic), ArcGIS StoryMaps</dd>
+                <dt>Spatial methods</dt>
+                <dd>Multi-criteria analysis (AHP, TOPSIS), raster and cost-distance modelling, spatial SQL</dd>
                 <dt>Data</dt>
-                <dd>Statistics with R, spatial SQL, ImageJ, Python (basic)</dd>
+                <dd>Statistics with R, ImageJ, Python (basic)</dd>
                 <dt>Field &amp; lab</dt>
                 <dd>Standardised transects, species identification, specimen processing and pinning</dd>
                 <dt>Languages</dt>
@@ -149,33 +165,24 @@
         </section>
 
         <section>
-            <h2>Communications</h2>
+            <h2>Volunteering &amp; awards</h2>
             <div class="item">
-                <p>Leonard SB, Gutierrez Muniz M, <strong>Rodriguez Zambrano A</strong>, et al. (2026). <em>10 Year Assessment of Changes in Beetle Assemblages at the Robert J. Bernard Field Station.</em> Poster, Southern California Academy of Sciences Annual Meeting, Chapman University, 18 April 2026.</p>
-            </div>
-        </section>
-
-        <section>
-            <h2>Volunteering &amp; outreach</h2>
-            <div class="item">
-                <h3>Butterfly Monitoring Scheme (BMS)</h3> <span class="date">2025 – present</span>
+                <div class="head"><h3>Butterfly Monitoring (BMS)</h3> <span class="date">2025 – now</span></div>
                 <p class="where">Universidad de Murcia · European BMS</p>
-                <ul><li>Standardised georeferenced transects and species identification</li></ul>
+                <ul>
+                    <li>Standardised georeferenced transects and species identification</li>
+                    <li><strong>Community Service Award</strong> (CEUM, March 2026) as one of the 10 most active volunteers</li>
+                </ul>
             </div>
             <div class="item">
-                <h3>Science outreach (SeCyT 2024 &amp; 2025)</h3>
-                <p class="where">Asociación Iberozoa &amp; UMU</p>
+                <div class="head"><h3>Science outreach</h3> <span class="date">2024, 2025</span></div>
+                <p class="where">Semana de la Ciencia y la Tecnología · Asociación Iberozoa &amp; UMU</p>
                 <ul><li>Environmental education on herpetofauna and geological heritage</li></ul>
             </div>
         </section>
 
         <section>
-            <h2>Awards</h2>
-            <p>Social Work Award — II Gala de Primavera (CEUM), Universidad de Murcia, March 2026. Top 10 most active volunteers of the UMU Butterfly Monitoring Scheme.</p>
-        </section>
-
-        <section>
-            <h2>Certificates &amp; programmes</h2>
+            <h2>Certificates &amp; training</h2>
             <ul>
                 <li>EUniWell Intensive Programme (3 ECTS), University of Florence</li>
                 <li>II BAS Workshop – Biology, Water and Sustainability (26.25 h)</li>
@@ -184,7 +191,6 @@
                 <li>Environmental Education on the Río Mula (16 h)</li>
             </ul>
         </section>
-
     </div>
 
 </div>
